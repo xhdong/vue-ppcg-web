@@ -1,0 +1,26 @@
+
+.navbar {
+  min-width: $minWidth;
+  width: 100%;
+  background: $navBg;
+  .nav-wrap {
+    margin: 0 auto;
+    width: $minWidth;
+    display: flex;
+    justify-content: center;
+    .item {
+      position: relative;
+      cursor: pointer;
+      height: $navHeight;
+      line-height: $navHeight;
+      color: rgba(255, 255, 255, $textOpacity);
+      padding: 0 40px;
+      font-size: 14px;
+      &.active {
+        background-color: $activeBg;
+        color: rgba(255, 255, 255, 1);
+        font-weight: 600;
+      }
+    }
+  }
+}

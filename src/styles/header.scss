@@ -1,0 +1,39 @@
+.header {
+  min-width: $minWidth;
+  width: 100%;
+  height: $headerHeight;
+  background: $yellow;
+  .header-wrap {
+    margin: 0 auto;
+    width: $minWidth;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .el-input {
+      width: 380px;
+      height: 35px;
+      input {
+        height: 35px;
+        line-height: 35px;
+        border: 1px solid rgba(72, 129, 255, 0.5);
+        background-color: rgba(72, 129, 255, 0.3);
+        border-radius: 4px;
+        color: #ffffff;
+      }
+      .el-icon-search {
+        line-height: 100%;
+        color: #ffffff;
+      }
+    }
+    .el-input__inner::-webkit-input-placeholder {
+      color: #ffffff;
+    }
+    .el-input__inner::-moz-input-placeholder {
+      color: #ffffff;
+    }
+    .el-input__inner::-ms-input-placeholder {
+      color: #ffffff;
+    }
+  }
+}
