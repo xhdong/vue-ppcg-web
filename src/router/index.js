@@ -79,6 +79,20 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/material-selector',
+    component: () => import('@/views/material-selector/index'),
+    hidden: true,
+    name: 'MaterialSelector',
+    meta: { title: '材料选择' }
+  },
+  {
+    path: '/service-selector',
+    component: () => import('@/views/service-selector/index'),
+    hidden: true,
+    name: 'ServiceSelector',
+    meta: { title: '服务内容选择' }
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 export const asyncRoutes = [

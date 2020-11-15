@@ -1,13 +1,13 @@
 <template>
     <el-row class="app-container">
         <el-row class="form-wrapper">
-            <el-form ref="pageForm" :inline="true" :model="pageForm">
+            <el-form ref="pageForm" :inline="true" size="small" :model="pageForm">
                 <el-form-item label="分包编码">
                     <el-input v-model="pageForm.code" placeholder="分包编码"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit">查询</el-button>
-                    <el-button type="primary" @click="onReset('pageForm')">重围</el-button>
+                    <el-button type="primary" @click="onSubmit" icon="el-icon-search">查询</el-button>
+                    <el-button type="default" @click="onReset('pageForm')" icon="el-icon-refresh">重置</el-button>
                 </el-form-item>
             </el-form>
         </el-row>
@@ -60,7 +60,7 @@
                             {
                                 name: '删除',
                                 type: 'danger',
-                                click: (row) => {
+                                click: () => {
                                 }
                             }
                         ]
@@ -98,6 +98,15 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    .app-container {
+        padding: 20px;
+        .table-wrapper {
 
+        }
+        .page-wrapper {
+            text-align: right;
+            padding: 15px 0;
+        }
+    }
 </style>
