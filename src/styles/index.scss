@@ -194,3 +194,10 @@ aside {
 .multiselect--active {
   z-index: 1000 !important;
 }
+.el-table th {
+  background-color: #f5f7fa;
+}
+.el-table th,
+.el-table td {
+  text-align: center;
+}

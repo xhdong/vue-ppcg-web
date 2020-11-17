@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/layout'
+import LayoutMyCenter from '@/layout-my-center'
 Vue.use(Router)
 export const constantRoutes = [
   {
@@ -48,6 +49,56 @@ export const constantRoutes = [
         component: () => import('@/views/recruit/index'),
         name: 'Recruit',
         meta: { title: '供应商招募' }
+      },
+      {
+        path: 'company-information',
+        component: () => import('@/views/company-information/index'),
+        name: 'CompanyInformation',
+        meta: { title: '公司资料' }
+      }
+    ]
+  },
+  {
+    path: '/my-center',
+    component: LayoutMyCenter,
+    redirect: '/index',
+    hidden: true,
+    children: [
+      {
+        path: 'company-information',
+        component: () => import('@/views/company-information/index'),
+        name: 'CompanyInformation',
+        meta: { title: '公司资料' }
+      },
+      {
+        path: 'message-center',
+        component: () => import('@/views/my-center/message-center/index.vue'),
+        name: 'MessageCenter',
+        meta: { title: '消息中心' }
+      },
+      {
+        path: 'message-detail',
+        component: () => import('@/views/my-center/message-detail/index.vue'),
+        name: 'MessageDetail',
+        meta: { title: '消息详情' }
+      },
+      {
+        path: 'online-registration',
+        component: () => import('@/views/my-center/online-registration/index.vue'),
+        name: 'OnlineRegistration',
+        meta: { title: '在线报名' }
+      },
+      {
+        path: 'my-tender',
+        component: () => import('@/views/my-center/my-tender/index.vue'),
+        name: 'MyTender',
+        meta: { title: '我的投标' }
+      },
+      {
+        path: 'tender-detail',
+        component: () => import('@/views/my-center/tender-detail/index.vue'),
+        name: 'TenderDetail',
+        meta: { title: '投标详情' }
       }
     ]
   },
