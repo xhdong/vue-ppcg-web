@@ -11,7 +11,7 @@ NProgress.configure({ showSpinner: false })
 // const whiteList = ['/login', '/auth-redirect']
 
 router.beforeEach(async(to, from, next) => {
-  console.log('to, from: ', to, from)
+  // console.log('to, from: ', to, from)
   NProgress.start()
   document.title = getPageTitle(to.meta.title)
   // 待删除
