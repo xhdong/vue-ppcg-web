@@ -57,14 +57,14 @@ export default {
     },
     onSave(formName) {
       console.log('onSave: ', this.ruleForm)
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!')
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
+      // this.$refs[formName].validate((valid) => {
+      //   if (valid) {
+      //     alert('submit!')
+      //   } else {
+      //     console.log('error submit!!')
+      //     return false
+      //   }
+      // })
       this.$emit('save', 3)
     },
   }
