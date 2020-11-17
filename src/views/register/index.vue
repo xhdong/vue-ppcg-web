@@ -27,6 +27,9 @@
         <div v-if="activeIndex == 3" class="step-3">
           <Step3 ref="ruleForm3" @save="onSave"/>
         </div>
+        <div v-if="activeIndex == 4" class="step-4">
+          <Step4 ref="ruleForm4" @save="onSave"/>
+        </div>
       </div>
     </div>
   </div>
@@ -35,12 +38,14 @@
 import Step1 from './Components/Step1'
 import Step2 from './Components/Step2'
 import Step3 from './Components/Step3'
+import Step4 from './Components/Step4'
 export default {
   name: 'Register',
   components: {
     Step1,
     Step2,
-    Step3
+    Step3,
+    Step4
   },
   data() {
     return {
