@@ -1,26 +1,27 @@
 <template>
-  <el-form :rules="rules" :model="ruleForm" ref="ruleForm" class="financial-status">
-    <el-form-item label="财务报告" prop="report">
-    </el-form-item>
+  <el-form ref="ruleForm" :rules="rules" :model="ruleForm" class="financial-status">
+    <el-form-item label="财务报告" prop="report" />
     <el-form-item label="年份" prop="nianfen1">
-      <el-input v-model="ruleForm.nianfen1" placeholder="请输入年份" disabled></el-input>
+      <el-input v-model="ruleForm.nianfen1" placeholder="请输入年份" disabled />
     </el-form-item>
     <el-form-item label="对应年份营业额" prop="yingyee1">
-      <el-input v-model="ruleForm.yingyee1" type="number" placeholder="请输入对应年份营业额" min="0" precision="2" :maxlength="10"></el-input>
+      <el-input v-model="ruleForm.yingyee1" type="number" placeholder="请输入对应年份营业额" min="0" precision="2" :maxlength="10" />
       <span class="unit">万元</span>
     </el-form-item>
     <el-form-item label="年份" prop="nianfen2">
-      <el-input v-model="ruleForm.nianfen2" placeholder="请输入年份" disabled></el-input>
+      <el-input v-model="ruleForm.nianfen2" placeholder="请输入年份" disabled />
     </el-form-item>
     <el-form-item label="对应年份营业额" prop="yingyee2">
-      <el-input v-model="ruleForm.yingyee2" type="number" placeholder="请输入对应年份营业额" min="0" precision="2" :maxlength="10"></el-input>
+      <el-input v-model="ruleForm.yingyee2" type="number" placeholder="请输入对应年份营业额" min="0" precision="2" :maxlength="10" />
       <span class="unit">万元</span>
+      <el-input v-model="ruleForm.yingyee2" type="number" placeholder="请输入对应年份营业额" min="0" precision="2" :maxlength="10" />
+      <span>万元</span>
     </el-form-item>
     <el-form-item label="年份" prop="nianfen3">
-      <el-input v-model="ruleForm.nianfen3" placeholder="请输入年份" disabled></el-input>
+      <el-input v-model="ruleForm.nianfen3" placeholder="请输入年份" disabled />
     </el-form-item>
     <el-form-item label="对应年份营业额" prop="yingyee3">
-      <el-input v-model="ruleForm.yingyee3" type="number" placeholder="请输入对应年份营业额" min="0" precision="2" :maxlength="10"></el-input>
+      <el-input v-model="ruleForm.yingyee3" type="number" placeholder="请输入对应年份营业额" min="0" precision="2" :maxlength="10" />
       <span class="unit">万元</span>
     </el-form-item>
     <p>前三合作方</p>
@@ -29,15 +30,15 @@
         <span class="title">合作方名称</span>
         <span class="title">营业额</span>
         <span class="title">占比</span>
-        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate"></el-input>
-        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10"></el-input><span class="unit">万元</span></div>
-        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10"></el-input><span class="unit">%</span></div>
-        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate"></el-input>
-        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10"></el-input><span class="unit">万元</span></div>
-        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10"></el-input><span class="unit">%</span></div>
-        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate"></el-input>
-        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10"></el-input><span class="unit">万元</span></div>
-        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10"></el-input><span class="unit">%</span></div>
+        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate" />
+        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10" /><span class="unit">万元</span></div>
+        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10" /><span class="unit">%</span></div>
+        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate" />
+        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10" /><span class="unit">万元</span></div>
+        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10" /><span class="unit">%</span></div>
+        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate" />
+        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10" /><span class="unit">万元</span></div>
+        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10" /><span class="unit">%</span></div>
       </div>
     </el-form-item>
     <el-form-item label="2020" label-width="80px" class="extra">
@@ -45,20 +46,20 @@
         <span class="title">合作方名称</span>
         <span class="title">营业额</span>
         <span class="title">占比</span>
-        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate"></el-input>
-        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10"></el-input><span class="unit">万元</span></div>
-        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10"></el-input><span class="unit">%</span></div>
-        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate"></el-input>
-        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10"></el-input><span class="unit">万元</span></div>
-        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10"></el-input><span class="unit">%</span></div>
-        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate"></el-input>
-        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10"></el-input><span class="unit">万元</span></div>
-        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10"></el-input><span class="unit">%</span></div>
+        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate" />
+        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10" /><span class="unit">万元</span></div>
+        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10" /><span class="unit">%</span></div>
+        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate" />
+        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10" /><span class="unit">万元</span></div>
+        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10" /><span class="unit">%</span></div>
+        <el-input v-model="ruleForm.yingyee3" placeholder="合作方名称" min="0" precision="2" :maxlength="10" class="cooperate" />
+        <div><el-input v-model="ruleForm.yingyee3" type="number" placeholder="营业额" min="0" precision="2" :maxlength="10" /><span class="unit">万元</span></div>
+        <div><el-input v-model="ruleForm.yingyee3" placeholder="占比" min="0" precision="2" :maxlength="10" /><span class="unit">%</span></div>
       </div>
     </el-form-item>
     <el-form-item>
       <el-button @click="onCancle('ruleForm')">取消</el-button>
-      <el-button @click="onSave('ruleForm')" type="primary">保存</el-button>
+      <el-button type="primary" @click="onSave('ruleForm')">保存</el-button>
       <!-- <el-button @click="onNext" type="primary">下一步</el-button> -->
     </el-form-item>
   </el-form>
@@ -66,8 +67,9 @@
 <script>
 import mixins from '../mixins/index'
 export default {
+  mixins,
   props: {},
-  data () {
+  data() {
     return {
       tableData: [],
       ruleForm: {
@@ -77,7 +79,7 @@ export default {
         nianfen2: '',
         yingyee2: '',
         nianfen3: '',
-        yingyee3: '',
+        yingyee3: ''
       },
       rules: {
         report: [
@@ -100,29 +102,28 @@ export default {
         ],
         yingyee3: [
           { required: true, message: '请输入营业额', trigger: 'blur' }
-        ],
+        ]
       }
     }
   },
-  mixins,
-  mounted () {
+  mounted() {
     const cur = new Date()
     console.log('cur: ', cur.getFullYear())
     this.ruleForm.nianfen1 = cur.getFullYear()
     this.ruleForm.nianfen2 = this.ruleForm.nianfen1 - 1
     this.ruleForm.nianfen3 = this.ruleForm.nianfen1 - 2
     this.tableData.push({
-      nianfen: this.ruleForm.nianfen2,
+      nianfen: this.ruleForm.nianfen2
     }, {
       nianfen: this.ruleForm.nianfen1
     })
   },
   methods: {
     // 预留
-    setData (data) {
-      console.log('%c 🍠 data: ', 'font-size:20px;background-color: #E41A6A;color:#fff;', data);
+    setData(data) {
+      console.log('%c 🍠 data: ', 'font-size:20px;background-color: #E41A6A;color:#fff;', data)
     },
-    getData () {
+    getData() {
       const res = {}
       return res
     },

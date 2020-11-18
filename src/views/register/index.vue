@@ -19,16 +19,16 @@
       </div>
       <div class="step-wrap">
         <div v-if="activeIndex == 1" class="step-1">
-          <Step1 ref="ruleForm1" @save="onSave"/>
+          <Step1 ref="ruleForm1" @save="onSave" />
         </div>
         <div v-if="activeIndex == 2" class="step-2">
-          <Step2 ref="ruleForm1" @save="onSave"/>
+          <Step2 ref="ruleForm1" @save="onSave" />
         </div>
         <div v-if="activeIndex == 3" class="step-3">
-          <Step3 ref="ruleForm3" @save="onSave"/>
+          <Step3 ref="ruleForm3" @save="onSave" />
         </div>
         <div v-if="activeIndex == 4" class="step-4">
-          <Step4 ref="ruleForm4" @save="onSave"/>
+          <Step4 ref="ruleForm4" @save="onSave" />
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@ export default {
     }
   },
   methods: {
-    onSave (activeIndex) {
+    onSave(activeIndex) {
       console.log('activeIndex: ', activeIndex)
       if (!activeIndex) return
       this.activeIndex = activeIndex
