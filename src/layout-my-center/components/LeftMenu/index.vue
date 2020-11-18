@@ -7,7 +7,7 @@
         </el-row>
         <el-row class="second-menu">
           <el-row class="menu-item">
-            <a href="javascript:;" class="txt-title">消息中心</a>
+            <router-link to="/my-center/message-center" class="txt-title">消息中心</router-link>
           </el-row>
         </el-row>
       </el-row>
@@ -17,22 +17,22 @@
         </el-row>
         <el-row class="second-menu">
           <el-row class="menu-item">
-            <a href="javascript:;" class="txt-title">在线报名</a>
+            <router-link to="/my-center/online-registration" class="txt-title">在线报名</router-link>
           </el-row>
           <el-row class="menu-item">
-            <a href="javascript:;" class="txt-title">我的投标</a>
+            <router-link to="/my-center/my-tender" class="txt-title">我的投标</router-link>
           </el-row>
           <el-row class="menu-item">
             <a href="javascript:;" class="txt-title">中止公告</a>
           </el-row>
           <el-row class="menu-item">
-            <a href="javascript:;" class="txt-title">澄清公告</a>
+            <router-link to="/my-center/clarification-notice" class="txt-title">澄清公告</router-link>
           </el-row>
           <el-row class="menu-item">
-            <a href="javascript:;" class="txt-title">在线提疑</a>
+            <router-link to="/my-center/online-question" class="txt-title">在线提疑</router-link>
           </el-row>
           <el-row class="menu-item">
-            <a href="javascript:;" class="txt-title">在线澄清</a>
+            <router-link to="/my-center/online-clarification" class="txt-title">在线澄清</router-link>
           </el-row>
         </el-row>
       </el-row>
@@ -96,6 +96,7 @@ export default {
      line-height: 30px;
      color: #313303;
      display: block;
+      white-space: nowrap;
      padding-left: 20px;
      ::v-deep i {
       font-size: 18px;

@@ -50,7 +50,13 @@
               :prop="col.prop"
               :label="col.label"
               :formatter="col.formatter"
-            />
+            >
+              <!--              <template slot-scope="scope">-->
+              <!--                <div v-if="col.prop === 'theme'">-->
+              <!--                  <router-link :to="scope.row.src"></router-link>-->
+              <!--                </div>-->
+              <!--              </template>-->
+            </el-table-column>
           </el-table>
         </el-row>
         <el-row class="page-wrapper">
@@ -86,7 +92,10 @@ export default {
         },
         {
           label: '主题',
-          prop: 'theme'
+          prop: 'theme',
+          click: (row) => {
+            this.handleNavigateToDetail(row)
+          }
         },
         {
           label: '日期',
@@ -116,7 +125,8 @@ export default {
           type: '母子关系绑定',
           theme: '【通知】母子关系绑定通知',
           date: '2020-11-16',
-          status: '未读'
+          status: '未读',
+          src: ''
         }
       ]
       this.loading = false
@@ -125,6 +135,10 @@ export default {
     },
     onReset(formName) {
       this.$refs[formName] && this.$refs[formName].resetFields()
+    },
+    handleNavigateToDetail(row) {
+      console.log(row)
+      // this.$router.push({ path: `${row}` })
     }
   }
 }

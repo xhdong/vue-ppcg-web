@@ -1,139 +1,159 @@
 <template>
-    <el-dialog
-            title="应标回执"
-            :visible.sync="dialogTenderReceiptVisible"
-            width="60%">
-        <el-row class="header-group">
-            <span class="txt-title">主体工程</span>
+  <el-dialog
+    title="应标回执"
+    :visible.sync="dialogTenderReceiptVisible"
+    width="60%"
+  >
+    <el-row class="header-group">
+      <span class="txt-title">主体工程</span>
+    </el-row>
+    <el-row class="detail-wrapper">
+      <el-col :span="24">
+        <el-row class="txt-group">
+          <el-row class="txt-label">招标工程名称</el-row>
+          <el-row class="txt-content">2020-11-16</el-row>
         </el-row>
-        <el-row class="detail-wrapper">
-            <el-col :span="24">
-                <el-row class="txt-group">
-                    <el-row class="txt-label">招标工程名称</el-row>
-                    <el-row class="txt-content">2020-11-16</el-row>
-                </el-row>
-            </el-col>
-            <el-col :span="24">
-                <el-row class="txt-group">
-                    <el-row class="txt-label">回执截止日期</el-row>
-                    <el-row class="txt-content">公开招标</el-row>
-                </el-row>
-            </el-col>
-            <el-col :span="24">
-                <el-row class="txt-group">
-                    <el-row class="txt-label">回标截止日期</el-row>
-                    <el-row class="txt-content">承建商类</el-row>
-                </el-row>
-            </el-col>
-            <el-col :span="24">
-                <el-row class="txt-group">
-                    <el-row class="txt-label">招标负责人</el-row>
-                    <el-row class="txt-content">广州</el-row>
-                </el-row>
-            </el-col>
+      </el-col>
+      <el-col :span="24">
+        <el-row class="txt-group">
+          <el-row class="txt-label">回执截止日期</el-row>
+          <el-row class="txt-content">公开招标</el-row>
         </el-row>
-        <el-row class="detail-wrapper_form">
-            <el-form :model="tenderReceiptForm" size="small" :rules="rules">
-                <el-col :span="24">
-                    <el-row class="txt-group">
-                        <el-row class="txt-label">是否参与</el-row>
-                        <el-row class="txt-content">
-                            <el-radio v-model="tenderReceiptForm.isPartake" label="1">参与</el-radio>
-                            <el-radio v-model="tenderReceiptForm.isPartake" label="2">不参与</el-radio>
-                        </el-row>
-                    </el-row>
-                </el-col>
-                <el-col :span="24">
-                    <el-row class="txt-group">
-                        <el-row class="txt-label">参与标段</el-row>
-                        <el-row class="txt-content">
-                            <el-row class="form-wrapper">
-                                <el-row class="input-group">
-                                    <el-form-item label="参与标段" prop="tenderName">
-                                        <el-input v-for="(item, index) in tenderReceiptForm.tenderList" :key="index" v-model="item.tenderName"></el-input>
-                                    </el-form-item>
-                                </el-row>
-                                <el-row class="input-group">
-                                    <el-form-item label="联系人" prop="contactName">
-                                        <el-input v-for="(item, index) in tenderReceiptForm.tenderList" :key="index" v-model="item.contactName"></el-input>
-                                    </el-form-item>
-                                </el-row>
-                                <el-row class="input-group">
-                                    <el-form-item label="联系人职位" prop="contactPosition">
-                                        <el-input v-for="(item, index) in tenderReceiptForm.tenderList" :key="index" v-model="item.contactPosition"></el-input>
-                                    </el-form-item>
-                                </el-row>
-                                <el-row class="input-group">
-                                    <el-form-item label="联系人号码" prop="contactPhone">
-                                        <el-input v-for="(item, index) in tenderReceiptForm.tenderList" :key="index" v-model="item.contactPhone"></el-input>
-                                    </el-form-item>
-                                </el-row>
-                                <el-row class="input-group">
-                                    <el-form-item label="联系人授权委托书">
-                                        <template v-for="(item, index) in tenderReceiptForm.tenderList">
-                                            <el-upload
-                                                    class="upload-wrapper"
-                                                    action="https://jsonplaceholder.typicode.com/posts/"
-                                                    :key="index"
-                                                    :on-preview="handlePreview"
-                                                    :on-remove="handleRemove"
-                                                    :before-remove="beforeRemove"
-                                                    multiple
-                                                    :limit="3"
-                                                    :on-exceed="handleExceed"
-                                                    :file-list="item.fileList">
-                                                <el-button size="small" icon="el-icon-upload" type="primary">上传</el-button>
-                                            </el-upload>
-                                        </template>
-                                        <span class="txt-src"></span>
-                                    </el-form-item>
-                                </el-row>
-                            </el-row>
-                            <p class="txt-tips">xxxxx</p>
-                        </el-row>
-                    </el-row>
-                </el-col>
-            </el-form>
+      </el-col>
+      <el-col :span="24">
+        <el-row class="txt-group">
+          <el-row class="txt-label">回标截止日期</el-row>
+          <el-row class="txt-content">承建商类</el-row>
         </el-row>
-        <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogTenderReceiptVisible = false" size="small">取 消</el-button>
-    <el-button type="primary" @click="dialogTenderReceiptVisible = false" size="small">确 定</el-button>
-  </span>
-    </el-dialog>
+      </el-col>
+      <el-col :span="24">
+        <el-row class="txt-group">
+          <el-row class="txt-label">招标负责人</el-row>
+          <el-row class="txt-content">广州</el-row>
+        </el-row>
+      </el-col>
+    </el-row>
+    <el-row class="detail-wrapper_form">
+      <el-form :model="tenderReceiptForm" size="small" :rules="rules">
+        <el-col :span="24">
+          <el-row class="txt-group">
+            <el-row class="txt-label">是否参与</el-row>
+            <el-row class="txt-content">
+              <el-radio v-model="tenderReceiptForm.isPartake" label="1">参与</el-radio>
+              <el-radio v-model="tenderReceiptForm.isPartake" label="2">不参与</el-radio>
+            </el-row>
+          </el-row>
+        </el-col>
+        <el-col :span="24">
+          <el-row class="txt-group">
+            <el-row class="txt-label">参与标段</el-row>
+            <el-row class="txt-content">
+              <el-row class="form-wrapper">
+                <el-row class="input-group">
+                  <el-form-item label="参与标段" prop="tenderName">
+                    <el-input
+                      v-for="(item, index) in tenderReceiptForm.tenderList"
+                      :key="index"
+                      v-model="item.tenderName"
+                    />
+                  </el-form-item>
+                </el-row>
+                <el-row class="input-group">
+                  <el-form-item label="联系人" prop="contactName">
+                    <el-input
+                      v-for="(item, index) in tenderReceiptForm.tenderList"
+                      :key="index"
+                      v-model="item.contactName"
+                    />
+                  </el-form-item>
+                </el-row>
+                <el-row class="input-group">
+                  <el-form-item label="联系人职位" prop="contactPosition">
+                    <el-input
+                      v-for="(item, index) in tenderReceiptForm.tenderList"
+                      :key="index"
+                      v-model="item.contactPosition"
+                    />
+                  </el-form-item>
+                </el-row>
+                <el-row class="input-group">
+                  <el-form-item label="联系人号码" prop="contactPhone">
+                    <el-input
+                      v-for="(item, index) in tenderReceiptForm.tenderList"
+                      :key="index"
+                      v-model="item.contactPhone"
+                    />
+                  </el-form-item>
+                </el-row>
+                <el-row class="input-group">
+                  <el-form-item label="联系人授权委托书">
+                    <template v-for="(item, index) in tenderReceiptForm.tenderList">
+                      <el-upload
+                        :key="index"
+                        class="upload-wrapper"
+                        action="https://jsonplaceholder.typicode.com/posts/"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :before-remove="beforeRemove"
+                        multiple
+                        :limit="3"
+                        :on-exceed="handleExceed"
+                        :file-list="item.fileList"
+                      >
+                        <el-button size="small" icon="el-icon-upload" type="primary">上传</el-button>
+                      </el-upload>
+                    </template>
+                    <span class="txt-src" />
+                  </el-form-item>
+                </el-row>
+              </el-row>
+              <p class="txt-tips">xxxxx</p>
+            </el-row>
+          </el-row>
+        </el-col>
+      </el-form>
+    </el-row>
+    <span slot="footer" class="dialog-footer">
+      <el-button size="small" @click="dialogTenderReceiptVisible = false">取 消</el-button>
+      <el-button type="primary" size="small" @click="dialogTenderReceiptVisible = false">确 定</el-button>
+    </span>
+  </el-dialog>
 </template>
 
 <script>
-    export default {
-        name: "TenderReceipt",
-        props: {
-            dialogTenderReceiptVisible: {
-                type: Boolean,
-                default: () => false
-            },
-            tenderReceiptForm: {
-                type: Object,
-                default: () => {}
-            },
-            rules: {
-                type: Object,
-                default: () => {}
-            },
-        },
-        methods: {
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
-            },
-            handlePreview(file) {
-                console.log(file);
-            },
-            handleExceed(files, fileList) {
-                this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
-            },
-            beforeRemove(file) {
-                return this.$confirm(`确定移除 ${ file.name }？`);
-            }
-        }
+export default {
+  name: 'TenderReceipt',
+  props: {
+    dialogTenderReceiptVisible: {
+      type: Boolean,
+      default: () => false
+    },
+    tenderReceiptForm: {
+      type: Object,
+      default: () => {
+      }
+    },
+    rules: {
+      type: Object,
+      default: () => {
+      }
     }
+  },
+  methods: {
+    handleRemove(file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview(file) {
+      console.log(file)
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
+    },
+    beforeRemove(file) {
+      return this.$confirm(`确定移除 ${file.name}？`)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
