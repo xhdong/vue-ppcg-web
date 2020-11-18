@@ -1,52 +1,52 @@
 <template>
-<el-row class="app-container">
-  <el-row class="header-wrapper">
-    <!-- 面包屑 start -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>变更公告</el-breadcrumb-item>
-    </el-breadcrumb>
-    <!-- 面包屑 end -->
+  <el-row class="app-container">
+    <el-row class="header-wrapper">
+      <!-- 面包屑 start -->
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>变更公告</el-breadcrumb-item>
+      </el-breadcrumb>
+      <!-- 面包屑 end -->
 
-    <!-- 查询条件 start -->
-    <el-row class="form-wrapper">
-      <el-form ref="pageForm" :inline="true" :model="pageForm" label-position="left" size="small" class="page-form">
-        <el-row class="form-group">
-        <el-form-item label="中标公告：" prop="name">
-          <el-input v-model="pageForm.name" clearable class="form-control" placeholder="招标公告"></el-input>
-        </el-form-item>
-        <el-form-item label="发布日期：" prop="publishDate">
-          <el-date-picker
-            v-model="pageForm.publishDate"
-            type="daterange"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            clearable
-            class="form-control">
-          </el-date-picker>
-        </el-form-item>
-        </el-row>
-        <el-row class="btn-group">
-          <el-button type="primary" size="small" icon="el-icon-search" @click="handleSubmit">查询</el-button>
-          <el-button type="default" size="small" icon="el-icon-refresh" @click="handleReset('pageForm')">重置</el-button>
-        </el-row>
-      </el-form>
+      <!-- 查询条件 start -->
+      <el-row class="form-wrapper">
+        <el-form ref="pageForm" :inline="true" :model="pageForm" label-position="left" size="small" class="page-form">
+          <el-row class="form-group">
+            <el-form-item label="中标公告：" prop="name">
+              <el-input v-model="pageForm.name" clearable class="form-control" placeholder="招标公告" />
+            </el-form-item>
+            <el-form-item label="发布日期：" prop="publishDate">
+              <el-date-picker
+                v-model="pageForm.publishDate"
+                type="daterange"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期"
+                clearable
+                class="form-control"
+              />
+            </el-form-item>
+          </el-row>
+          <el-row class="btn-group">
+            <el-button type="primary" size="small" icon="el-icon-search" @click="handleSubmit">查询</el-button>
+            <el-button type="default" size="small" icon="el-icon-refresh" @click="handleReset('pageForm')">重置</el-button>
+          </el-row>
+        </el-form>
+      </el-row>
+      <!-- 查询条件 end -->
     </el-row>
-    <!-- 查询条件 end -->
-  </el-row>
 
-  <el-row class="main-wrapper">
-    <!-- 列表 start -->
-    <TabsSwitch
-      :tabs-list="tabsList"
-      :loading="loading"
-      :columns="columns"
-      @handleClick="handleClick"
-    />
-    <!-- 列表 end -->
+    <el-row class="main-wrapper">
+      <!-- 列表 start -->
+      <TabsSwitch
+        :tabs-list="tabsList"
+        :loading="loading"
+        :columns="columns"
+        @handleClick="handleClick"
+      />
+      <!-- 列表 end -->
+    </el-row>
   </el-row>
-</el-row>
 </template>
 
 <script>
