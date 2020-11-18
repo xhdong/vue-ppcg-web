@@ -5,14 +5,14 @@
                 <el-row class="header-group">
                     <span class="txt-title">主体工程</span>
                     <el-row class="btn-group">
-                        <el-button type="primary" size="small">应标回执</el-button>
-                        <el-button type="primary" size="small">保证金附件上传</el-button>
+                        <el-button type="primary" size="small" @click="dialogTenderReceiptVisible = true">应标回执</el-button>
+                        <el-button type="primary" size="small" @click="dialogDepositUploadVisible = true">保证金附件上传</el-button>
                         <el-button type="primary" size="small">下载标书</el-button>
                         <el-button type="primary" size="small">在线提疑</el-button>
                         <el-button type="primary" size="small">回标</el-button>
                     </el-row>
                 </el-row>
-                <el-row class="base-info-wrapper">
+                <el-row class="detail-wrapper">
                     <el-col :span="12">
                         <el-row class="txt-group">
                             <el-row class="txt-label">发布时间</el-row>
@@ -108,12 +108,32 @@
                 </el-row>
             </el-tab-pane>
         </el-tabs>
+        <!--应标回执 start -->
+        <TenderReceipt
+                :dialog-tender-receipt-visible="dialogTenderReceiptVisible"
+                :tender-receipt-form="tenderReceiptForm"
+                :rules="rules"
+        />
+        <!--应标回执 end -->
+        <!--保证金上传附件 start -->
+        <DepositUpload
+                :dialog-deposit-upload-visible="dialogDepositUploadVisible"
+                :deposit-upload-form="depositUploadForm"
+                :rules="rules"
+        />
+        <!--保证金上传附件 end -->
     </el-row>
 </template>
 
 <script>
+    import TenderReceipt from '@/components/my-center/tender-detail/tender-receipt'
+    import DepositUpload from '@/components/my-center/tender-detail/deposit-upload'
     export default {
         name: "TenderDetail",
+        components: {
+            TenderReceipt,
+            DepositUpload
+        },
         data() {
             return {
                 activeName: 'tender',
@@ -142,7 +162,49 @@
                         label: '操作',
                         prop: 'status'
                     },
-                ]
+                ],
+                dialogTenderReceiptVisible: false,
+                dialogDepositUploadVisible: false,
+                tenderReceiptForm: {
+                 isPartake: 1,
+                    tenderList: [
+                        {
+                            tenderName: '',
+                            contactName: '',
+                            contactPosition: '',
+                            contactPhone: '',
+                            pic: '',
+                        },
+                        {
+                            tenderName: '',
+                            contactName: '',
+                            contactPosition: '',
+                            contactPhone: '',
+                            pic: '',
+                        },
+                        {
+                            tenderName: '',
+                            contactName: '',
+                            contactPosition: '',
+                            contactPhone: '',
+                            pic: '',
+                        }
+                    ]
+                },
+                depositUploadForm: {
+
+                },
+                rules: {
+                    contactName: [
+                        { required: true, message: '请输入联系人', trigger: 'blur' }
+                    ],
+                    contactPosition: [
+                        { required: true, message: '请输入联系人职位', trigger: 'blur' }
+                    ],
+                    contactPhone: [
+                        { required: true, message: '请输入联系人电话', trigger: 'blur' }
+                    ]
+                }
             }
         },
         methods: {
@@ -188,7 +250,7 @@
                 flex: 1;
             }
         }
-        .base-info-wrapper {
+        .detail-wrapper {
             border: 1px solid #EBEEF5;
             position: relative;
             overflow: hidden;
