@@ -2,7 +2,7 @@
   <el-dialog
     title="回标"
     :visible.sync="dialogResponseToTenderVisible"
-    width="60%"
+    class="dialog-lg"
   >
     <el-row class="detail-wrapper_form">
       <el-form :model="responseToTenderForm" size="small" :rules="rules">

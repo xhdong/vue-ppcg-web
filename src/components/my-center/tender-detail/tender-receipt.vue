@@ -2,7 +2,7 @@
   <el-dialog
     title="应标回执"
     :visible.sync="dialogTenderReceiptVisible"
-    width="60%"
+    class="dialog-lg"
   >
     <el-row class="header-group">
       <span class="txt-title">主体工程</span>
@@ -157,114 +157,135 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .header-group {
-        padding: 0 10px;
-        margin-top: 10px;
-        margin-bottom: 15px;
-        display: flex;
-        border-left: 2px solid #409EFF;
-        .txt-title {
-            flex: 1;
-            font-size: 14px;
-            color: #313303;
-            line-height: 24px;
-        }
+  .header-group {
+    padding: 0 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    border-left: 2px solid #409EFF;
+
+    .txt-title {
+      flex: 1;
+      font-size: 14px;
+      color: #313303;
+      line-height: 24px;
     }
-    .detail-wrapper {
-        border: 1px solid #EBEEF5;
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 15px;
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background-color: #fff;
-            left: 0;
-            bottom: 0;
-        }
-        .txt-group {
-            display: flex;
-            line-height: 30px;
-            .txt-label, .txt-content {
-                font-size: 14px;
-                padding: 5px 10px;
-                border-bottom: 1px solid #EBEEF5;
-            }
-            .txt-label {
-                background-color: #f5f7fa;
-                color: #313303;
-                flex: 0 0 150px;
-                text-align: center;
-            }
-            .txt-content {
-                flex: 1;
-                color: #606266;
-            }
-        }
+  }
+
+  .detail-wrapper {
+    border: 1px solid #EBEEF5;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      left: 0;
+      bottom: 0;
     }
-    .detail-wrapper_form {
-        border: 1px solid #EBEEF5;
-        position: relative;
-        overflow: hidden;
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            background-color: #fff;
-            left: 0;
-            bottom: 0;
-        }
-        .txt-group {
-            display: flex;
-            align-items: center;
-            line-height: 30px;
-            .txt-label, .txt-content {
-                font-size: 14px;
-                padding: 5px 10px;
-                border-bottom: 1px solid #EBEEF5;
-            }
-            .txt-label {
-                color: #313303;
-                flex: 0 0 150px;
-                text-align: center;
-            }
-            .txt-content {
-                flex: 1;
-                color: #606266;
-                border-left: 1px solid #EBEEF5;
-                .form-wrapper {
-                    display: flex;
-                    .input-group {
-                        padding: 0 10px;
-                        ::v-deep .el-form-item__label {
-                            text-align: center;
-                            display: block;
-                            float: none;
-                        }
-                        ::v-deep .el-form-item__content {
-                            .el-input {
-                                margin-bottom: 10px;
-                            }
-                            .txt-src {
-                                display: inline-block;
-                                min-width: 150px;
-                            }
-                        }
-                        .upload-wrapper {
-                            margin-bottom: 10px;
-                            text-align: center;
-                        }
-                    }
-                }
-                .txt-tips {
-                    color: #99a9bf;
-                    margin-top: 0;
-                }
-            }
-        }
+
+    .txt-group {
+      display: flex;
+      line-height: 30px;
+
+      .txt-label, .txt-content {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-bottom: 1px solid #EBEEF5;
+      }
+
+      .txt-label {
+        background-color: #f5f7fa;
+        color: #313303;
+        flex: 0 0 150px;
+        text-align: center;
+      }
+
+      .txt-content {
+        flex: 1;
+        color: #606266;
+      }
     }
+  }
+
+  .detail-wrapper_form {
+    border: 1px solid #EBEEF5;
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #fff;
+      left: 0;
+      bottom: 0;
+    }
+
+    .txt-group {
+      display: flex;
+      align-items: center;
+      line-height: 30px;
+
+      .txt-label, .txt-content {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-bottom: 1px solid #EBEEF5;
+      }
+
+      .txt-label {
+        color: #313303;
+        flex: 0 0 150px;
+        text-align: center;
+      }
+
+      .txt-content {
+        flex: 1;
+        color: #606266;
+        border-left: 1px solid #EBEEF5;
+
+        .form-wrapper {
+          display: flex;
+
+          .input-group {
+            padding: 0 10px;
+
+            ::v-deep .el-form-item__label {
+              text-align: center;
+              display: block;
+              float: none;
+              white-space: nowrap;
+            }
+
+            ::v-deep .el-form-item__content {
+              .el-input {
+                margin-bottom: 10px;
+              }
+
+              .txt-src {
+                display: inline-block;
+                min-width: 150px;
+              }
+            }
+
+            .upload-wrapper {
+              margin-bottom: 10px;
+              text-align: center;
+            }
+          }
+        }
+
+        .txt-tips {
+          color: #99a9bf;
+          margin-top: 0;
+        }
+      }
+    }
+  }
 
 </style>

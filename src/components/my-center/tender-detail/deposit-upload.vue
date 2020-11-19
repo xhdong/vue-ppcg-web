@@ -2,7 +2,7 @@
   <el-dialog
     title="保证金附件上传"
     :visible.sync="dialogDepositUploadVisible"
-    width="60%"
+    class="dialog-lg"
   >
     <el-row class="header-group">
       <span class="txt-title">基本信息</span>
