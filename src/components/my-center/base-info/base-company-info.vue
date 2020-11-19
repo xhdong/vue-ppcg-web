@@ -111,5 +111,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .form-wrapper {
+    .form-group {
+      ::v-deep .el-form-item__label {
 
+      }
+      ::v-deep .el-form-item__content {
+        width: 500px;
+        .address-group {
+          display: flex;
+          .address-item {
+            margin-left: 10px;
+            flex: 1;
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+        .form-control {
+          width: 100%;
+        }
+      }
+    }
+
+    .btn-group {
+      padding-left: 90px;
+      text-align: center;
+    }
+  }
 </style>
