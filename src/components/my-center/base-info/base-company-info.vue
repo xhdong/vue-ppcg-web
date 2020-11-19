@@ -10,34 +10,42 @@
         </el-form-item>
         <el-form-item label="企业性质：">
           <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择企业性质" clearable class="form-control">
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="是否是上市公司：">
           <el-select v-model="baseInfoForm.companySimpleName" placeholder="是否是上市公司" clearable class="form-control">
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="有设置分支机构或分公司的城市：">
-          <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择分支机构或城市" multiple clearable class="form-control">
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
+          <el-select v-model="baseInfoForm.valueList" placeholder="请选择分支机构或城市" multiple clearable class="form-control">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="愿意承接工程的省份/城市：">
-          <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择省份/城市" multiple clearable class="form-control">
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
-            <el-option>北京</el-option>
+          <el-select v-model="baseInfoForm.valueList" placeholder="请选择省份/城市" multiple clearable class="form-control">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
         </el-form-item>
         <el-form-item label="企业办公固话：">
@@ -47,29 +55,35 @@
           <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入企业邮箱" clearable class="form-control" />
         </el-form-item>
         <el-form-item label="公司所在地：">
-          <el-row class="address-group">
-            <el-row class="address-item">
+          <el-row class="select-group">
+            <el-row class="select-item">
               <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择省份" clearable class="form-control">
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
               </el-select>
             </el-row>
-            <el-row class="address-item">
+            <el-row class="select-item">
               <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择市区" clearable class="form-control">
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
               </el-select>
             </el-row>
-            <el-row class="address-item">
+            <el-row class="select-item">
               <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择城镇" clearable class="form-control">
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
-                <el-option>北京</el-option>
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
               </el-select>
             </el-row>
           </el-row>
@@ -105,9 +119,16 @@ export default {
     baseInfoForm: {
       type: Object,
       default: () => {}
+    },
+    options: {
+      type: Array,
+      default: () => []
     }
+  },
+  created() {
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -118,9 +139,9 @@ export default {
       }
       ::v-deep .el-form-item__content {
         width: 500px;
-        .address-group {
+        .select-group {
           display: flex;
-          .address-item {
+          .select-item {
             margin-left: 10px;
             flex: 1;
             &:first-child {
