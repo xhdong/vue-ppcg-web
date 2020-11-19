@@ -99,6 +99,84 @@ export const constantRoutes = [
         component: () => import('@/views/my-center/tender-detail/index.vue'),
         name: 'TenderDetail',
         meta: { title: '投标详情' }
+      },
+      {
+        path: 'online-question',
+        component: () => import('@/views/my-center/online-question/index.vue'),
+        name: 'OnlineQuestion',
+        meta: { title: '在线提疑' }
+      },
+      {
+        path: 'question-info',
+        component: () => import('@/views/my-center/question-info/index.vue'),
+        name: 'QuestionInfo',
+        meta: { title: '在线信息' }
+      },
+      {
+        path: 'suspension-notice',
+        component: () => import('@/views/my-center/suspension-notice/index.vue'),
+        name: 'SuspensionNotice',
+        meta: { title: '中止公告' }
+      },
+      {
+        path: 'clarification-notice',
+        component: () => import('@/views/my-center/clarification-notice/index.vue'),
+        name: 'ClarificationNotice',
+        meta: { title: '澄清公告' }
+      },
+      {
+        path: 'online-clarification',
+        component: () => import('@/views/my-center/online-clarification/index.vue'),
+        name: 'OnlineClarification',
+        meta: { title: '在线澄清' }
+      },
+      {
+        path: 'base-info',
+        component: () => import('@/views/my-center/base-info/index.vue'),
+        name: 'BaseInfo',
+        meta: { title: '基本资料' }
+      },
+      {
+        path: 'audit-logs',
+        component: () => import('@/views/my-center/audit-logs/index.vue'),
+        name: 'AuditLogs',
+        meta: { title: '审核日志' }
+      },
+      {
+        path: 'permission-file',
+        component: () => import('@/views/my-center/permission-file/index.vue'),
+        name: 'PermissionFile',
+        meta: { title: '授权文件' }
+      },
+      {
+        path: 'agent-manage',
+        component: () => import('@/views/my-center/agent-manage/index.vue'),
+        name: 'AgentManage',
+        meta: { title: '分公司/代理商管理' }
+      },
+      {
+        path: 'parent-subsidiary-company',
+        component: () => import('@/views/my-center/parent-subsidiary-company/index.vue'),
+        name: 'ParentSubsidiaryCompany',
+        meta: { title: '母子公司关系绑定' }
+      },
+      {
+        path: 'account-manage',
+        component: () => import('@/views/my-center/account-manage/index.vue'),
+        name: 'AccountManage',
+        meta: { title: '账号管理' }
+      },
+      {
+        path: 'change-password',
+        component: () => import('@/views/my-center/change-password/index.vue'),
+        name: 'ChangePassword',
+        meta: { title: '修改密码' }
+      },
+      {
+        path: 'favorite-list',
+        component: () => import('@/views/my-center/favorite-list/index.vue'),
+        name: 'FavoriteList',
+        meta: { title: '收藏夹' }
       }
     ]
   },

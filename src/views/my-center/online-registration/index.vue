@@ -3,57 +3,82 @@
     <el-row class="header-wrapper">
       <span class="txt-title">报名登记表</span>
     </el-row>
-    <el-row class="table-wrapper">
-      <el-table
-        v-loading="loading"
-        :data="tableData"
-        border
-        @selection-change="handleSelectionChange"
-      >
-        <el-table-column type="selection" />
-        <el-table-column label="报名标段">
-          <template slot-scope="scope">
-            <el-input v-model="scope.row.name" size="small" clearable class="form-control" />
-          </template>
-        </el-table-column>
-        <el-table-column label="联系人">
-          <template slot-scope="scope">
-            <el-input v-model="scope.row.name" size="small" clearable class="form-control" />
-          </template>
-        </el-table-column>
-        <el-table-column label="联系人职位">
-          <template slot-scope="scope">
-            <el-input v-model="scope.row.name" size="small" clearable class="form-control" />
-          </template>
-        </el-table-column>
-        <el-table-column label="联系人号码">
-          <template slot-scope="scope">
-            <el-input v-model="scope.row.name" size="small" clearable class="form-control" />
-          </template>
-        </el-table-column>
-        <el-table-column label="联系人授权委托书" width="200px">
-          <template slot-scope="scope">
-            <el-upload
-              class="upload-wrapper"
-              action="https://jsonplaceholder.typicode.com/posts/"
-              :on-preview="handlePreview"
-              :on-remove="handleRemove"
-              :before-remove="beforeRemove"
-              multiple
-              :limit="3"
-              :on-exceed="handleExceed"
-              :file-list="scope.fileList"
-            >
-              <el-button size="small" icon="el-icon-upload" type="primary">上传</el-button>
-            </el-upload>
-            <el-button size="small" type="default" icon="el-icon-view">查看</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-      <el-row class="btn-group">
-        <el-button type="default" size="small">取消</el-button>
-        <el-button type="primary" size="small">报名</el-button>
-      </el-row>
+    <el-row class="form-wrapper">
+      <el-form :model="pageForm" :rules="rules" size="small">
+        <el-row class="form-group">
+          <el-row class="input-group">
+            <el-form-item label="" prop="name">
+              <el-row
+                v-for="(item, index) in pageForm.list"
+                :key="index"
+                class="checkbox-wrapper"
+              >
+                <el-checkbox v-model="item.name" />
+              </el-row>
+            </el-form-item>
+          </el-row>
+          <el-row class="input-group">
+            <el-form-item label="参与标段" prop="name">
+              <el-input
+                v-for="(item, index) in pageForm.list"
+                :key="index"
+                v-model="item.name"
+              />
+            </el-form-item>
+          </el-row>
+          <el-row class="input-group">
+            <el-form-item label="联系人" prop="contactName">
+              <el-input
+                v-for="(item, index) in pageForm.list"
+                :key="index"
+                v-model="item.contactName"
+              />
+            </el-form-item>
+          </el-row>
+          <el-row class="input-group">
+            <el-form-item label="联系人职位" prop="contactPosition">
+              <el-input
+                v-for="(item, index) in pageForm.list"
+                :key="index"
+                v-model="item.contactPosition"
+              />
+            </el-form-item>
+          </el-row>
+          <el-row class="input-group">
+            <el-form-item label="联系人号码" prop="contactPhone">
+              <el-input
+                v-for="(item, index) in pageForm.list"
+                :key="index"
+                v-model="item.contactPhone"
+              />
+            </el-form-item>
+          </el-row>
+          <el-row class="input-group">
+            <el-form-item label="联系人授权委托书">
+              <template v-for="(item, index) in pageForm.list">
+                <el-upload
+                  :key="index"
+                  class="upload-wrapper"
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  :on-preview="handlePreview"
+                  :on-remove="handleRemove"
+                  :before-remove="beforeRemove"
+                  multiple
+                  :limit="3"
+                  :on-exceed="handleExceed"
+                  :file-list="item.fileList"
+                >
+                  <el-button size="small" icon="el-icon-upload" type="primary">上传</el-button>
+                </el-upload>
+              </template>
+            </el-form-item>
+          </el-row>
+        </el-row>
+        <el-row class="btn-group">
+          <el-button type="default" size="small" class="btn-cancel">取消</el-button>
+          <el-button type="primary" size="small" class="btn-comfirm">报名</el-button>
+        </el-row>
+      </el-form>
     </el-row>
   </el-row>
 </template>
@@ -65,7 +90,43 @@ export default {
     return {
       loading: false,
       tableData: [],
-      multipleSelection: []
+      multipleSelection: [],
+      pageForm: {
+        list: [
+          {
+            name: '',
+            contactName: '',
+            contactPosition: '',
+            contactPhone: '',
+            src: ''
+          },
+          {
+            name: '',
+            contactName: '',
+            contactPosition: '',
+            contactPhone: '',
+            src: ''
+          },
+          {
+            name: '',
+            contactName: '',
+            contactPosition: '',
+            contactPhone: '',
+            src: ''
+          }
+        ]
+      },
+      rules: {
+        contactName: [
+          { required: true, message: '请输入联系人', trigger: 'blur' }
+        ],
+        contactPosition: [
+          { required: true, message: '请输入联系人职位', trigger: 'blur' }
+        ],
+        contactPhone: [
+          { required: true, message: '请输入联系人电话', trigger: 'blur' }
+        ]
+      }
     }
   },
   created() {
@@ -135,22 +196,39 @@ export default {
         );
       }
     }
-
-    .table-wrapper {
-      margin: 15px 0;
-
-      ::v-deep .form-control {
-        text-align: center;
+    .form-wrapper {
+      margin: 20px 0;
+      .form-group {
+        display: flex;
+        .input-group {
+          padding: 0 10px;
+          &:first-child {
+            margin-top: 32px;
+          }
+          .checkbox-wrapper {
+            min-height: 30px;
+            margin-bottom: 10px;
+          }
+          ::v-deep .el-form-item__label {
+            text-align: center;
+            display: block;
+            white-space: nowrap;
+            float: none;
+          }
+          ::v-deep .el-form-item__content {
+            .el-input {
+              margin-bottom: 10px;
+            }
+          }
+          .upload-wrapper {
+            margin-bottom: 10px;
+            text-align: center;
+          }
+        }
       }
-
-      ::v-deep .upload-wrapper {
-        display: inline-block;
-        margin-right: 10px;
-      }
-
       .btn-group {
-        margin: 15px 0;
-        text-align: center;
+        text-align: right;
+        padding:  0 35px;
       }
     }
   }

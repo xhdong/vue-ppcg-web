@@ -1,24 +1,18 @@
 <template>
   <el-row class="app-container">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="我的投标" name="tender">
+      <el-tab-pane label="在线澄清" name="online-clarification">
         <el-row class="form-wrapper">
-          <el-form ref="pageForm" :inline="true" label-width="120px" size="small" :model="pageForm">
+          <el-form ref="pageForm" :inline="true" label-width="90px" size="small" :model="pageForm">
             <el-row class="form-group">
-              <el-form-item label="招标工程名称：" prop="theme">
-                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="招标工程名称" />
+              <el-form-item label="疑标问题：" prop="theme">
+                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="疑标问题" />
               </el-form-item>
-              <el-form-item label="招标分类：" prop="type">
-                <el-select v-model="pageForm.type" class="form-control" clearable placeholder="招标分类">
-                  <el-option label="区域一" value="shanghai" />
-                  <el-option label="区域二" value="beijing" />
-                </el-select>
+              <el-form-item label="招标工程：" prop="theme">
+                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="招标工程" />
               </el-form-item>
-              <el-form-item label="招标单位：" prop="date">
-                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="招标单位" />
-              </el-form-item>
-              <el-form-item label="状态：" prop="status">
-                <el-select v-model="pageForm.status" class="form-control" clearable placeholder="状态">
+              <el-form-item label="消息类型：" prop="type">
+                <el-select v-model="pageForm.type" class="form-control" clearable placeholder="消息类型">
                   <el-option label="区域一" value="shanghai" />
                   <el-option label="区域二" value="beijing" />
                 </el-select>
@@ -30,7 +24,7 @@
             </el-row>
           </el-form>
         </el-row>
-        <el-row class="table-wrapper" data-before="投标列表">
+        <el-row class="table-wrapper">
           <el-table
             v-loading="loading"
             :data="tableData"
@@ -42,7 +36,13 @@
               :prop="col.prop"
               :label="col.label"
               :formatter="col.formatter"
-            />
+            >
+              <!--              <template slot-scope="scope">-->
+              <!--                <div v-if="col.prop === 'theme'">-->
+              <!--                  <router-link :to="scope.row.src"></router-link>-->
+              <!--                </div>-->
+              <!--              </template>-->
+            </el-table-column>
           </el-table>
         </el-row>
         <el-row class="page-wrapper">
@@ -59,10 +59,10 @@
 
 <script>
 export default {
-  name: 'MyTender',
+  name: 'OnlineClarification',
   data() {
     return {
-      activeName: 'tender',
+      activeName: 'online-clarification',
       pageForm: {
         theme: '',
         type: '',
@@ -77,16 +77,20 @@ export default {
           prop: 'type'
         },
         {
-          label: '标段名称',
+          label: '疑问标题',
           prop: 'theme'
         },
         {
-          label: '标段状态',
-          prop: 'date'
+          label: '类型',
+          prop: 'theme'
+        },
+        {
+          label: '提问人',
+          prop: 'theme'
         },
         {
           label: '操作',
-          prop: 'status'
+          prop: 'opt'
         }
       ]
     }
@@ -102,7 +106,8 @@ export default {
           type: '母子关系绑定',
           theme: '【通知】母子关系绑定通知',
           date: '2020-11-16',
-          status: '未读'
+          status: '未读',
+          src: ''
         }
       ]
       this.loading = false
@@ -111,6 +116,10 @@ export default {
     },
     onReset(formName) {
       this.$refs[formName] && this.$refs[formName].resetFields()
+    },
+    handleNavigateToDetail(row) {
+      console.log(row)
+      // this.$router.push({ path: `${row}` })
     }
   }
 }
@@ -123,7 +132,7 @@ export default {
     .form-wrapper {
       .form-group {
         ::v-deep .el-form-item__content {
-          min-width: 320px;
+          width: 370px;
 
           .form-control {
             width: 100%;
@@ -132,24 +141,12 @@ export default {
       }
 
       .btn-group {
-        padding-left: 120px;
+        padding-left: 90px;
       }
     }
 
     .table-wrapper {
       margin: 15px 0;
-
-      &:before {
-        content: attr(data-before);
-        display: block;
-        line-height: 24px;
-        font-size: 14px;
-        color: #313303;
-        padding: 0 10px;
-        border-left: 3px solid #409EFF;
-        margin-top: 10px;
-        margin-bottom: 15px;
-      }
     }
 
     .page-wrapper {

@@ -1,0 +1,115 @@
+<template>
+  <el-row class="form-wrapper">
+    <el-form :model="baseInfoForm" size="small" label-width="230px">
+      <el-row class="form-group">
+        <el-form-item label="公司全称：">
+          <el-input v-model="baseInfoForm.companyFullName" placeholder="请输入公司全称" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="公司简称：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入公司简称" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="企业性质：">
+          <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择企业性质" clearable class="form-control">
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="是否是上市公司：">
+          <el-select v-model="baseInfoForm.companySimpleName" placeholder="是否是上市公司" clearable class="form-control">
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="有设置分支机构或分公司的城市：">
+          <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择分支机构或城市" multiple clearable class="form-control">
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="愿意承接工程的省份/城市：">
+          <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择省份/城市" multiple clearable class="form-control">
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+            <el-option>北京</el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="企业办公固话：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入企业办公固话" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="企业邮箱：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入企业邮箱" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="公司所在地：">
+          <el-row class="address-group">
+            <el-row class="address-item">
+              <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择省份" clearable class="form-control">
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+              </el-select>
+            </el-row>
+            <el-row class="address-item">
+              <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择市区" clearable class="form-control">
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+              </el-select>
+            </el-row>
+            <el-row class="address-item">
+              <el-select v-model="baseInfoForm.companySimpleName" placeholder="请选择城镇" clearable class="form-control">
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+                <el-option>北京</el-option>
+              </el-select>
+            </el-row>
+          </el-row>
+        </el-form-item>
+        <el-form-item label="详细地址：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入详细地址" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="邮政编码：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入邮政编码" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="曾合作过的其他大型地产商：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入地产商" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="基本情况介绍：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入基本信息" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" clearable class="form-control" />
+        </el-form-item>
+        <el-form-item label="营业范围：">
+          <el-input v-model="baseInfoForm.companySimpleName" placeholder="请输入营业范围" type="textarea" :autosize="{ minRows: 2, maxRows: 4}" clearable class="form-control" />
+        </el-form-item>
+      </el-row>
+      <el-row class="btn-group">
+        <el-button type="primary" size="small">下一步</el-button>
+        <el-button type="primary" size="small">提交</el-button>
+      </el-row>
+    </el-form>
+  </el-row>
+</template>
+
+<script>
+export default {
+  name: 'BaseCompanyInfo',
+  props: {
+    baseInfoForm: {
+      type: Object,
+      default: () => {}
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

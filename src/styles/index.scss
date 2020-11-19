@@ -201,3 +201,30 @@ aside {
 .el-table td {
   text-align: center;
 }
+
+.dialog-xl {
+  .el-dialog {
+    min-width: 1000px;
+  }
+}
+.dialog-lg {
+  .el-dialog {
+    min-width: 800px;
+  }
+}
+.dialog-md {
+  .el-dialog {
+    min-width: 600px;
+  }
+}
+.dialog-sm {
+  .el-dialog {
+    min-width: 400px;
+  }
+}
+
+.dialog-xs {
+  .el-dialog {
+    min-width: 200px;
+  }
+}
