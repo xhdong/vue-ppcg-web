@@ -66,7 +66,7 @@ export default {
               label: '中止公告',
               key: '',
               id: 0,
-              path: ''
+              path: '/my-center/suspension-notice'
             },
             {
               label: '澄清公告',
@@ -148,7 +148,7 @@ export default {
               label: '收藏夹',
               key: '',
               id: 0,
-              path: '/my-center/collection'
+              path: '/my-center/favorite-list'
             }
           ]
         }
