@@ -6,7 +6,26 @@
           <el-tab-pane label="公司基本信息" name="base-company-info">
             <BaseCompanyInfo
               :base-info-form="baseInfoForm"
+              :options="options"
             />
+          </el-tab-pane>
+          <el-tab-pane label="其他信息" name="other-info">
+            <OtherInfo
+              :base-info-form="baseInfoForm"
+              :options="options"
+            />
+          </el-tab-pane>
+          <el-tab-pane label="联系人" name="contacts">
+            <ContactsList />
+          </el-tab-pane>
+          <el-tab-pane label="财务状态评估表" name="financial-status">
+            <FinancialStatus />
+          </el-tab-pane>
+          <el-tab-pane label="产品服务信息" name="product-service">
+            <ProductService />
+          </el-tab-pane>
+          <el-tab-pane label="资质信息" name="qualification-list">
+            <QualificationList />
           </el-tab-pane>
         </el-tabs>
       </el-tab-pane>
@@ -16,22 +35,52 @@
 
 <script>
 import BaseCompanyInfo from '@/components/my-center/base-info/base-company-info'
+import OtherInfo from '@/components/my-center/base-info/other-info'
+import ContactsList from '@/components/my-center/base-info/contact-list'
+import FinancialStatus from '@/components/my-center/base-info/financial-status'
+import ProductService from '@/components/my-center/base-info/product-service'
+import QualificationList from '@/components/my-center/base-info/qualification-list'
 export default {
   name: 'BaseInfo',
   components: {
-    BaseCompanyInfo
+    BaseCompanyInfo,
+    OtherInfo,
+    ContactsList,
+    FinancialStatus,
+    ProductService,
+    QualificationList
   },
   data() {
     return {
       activeName: 'base-info',
-      activeNameSub: 'base-company-info',
+      // activeNameSub: 'base-company-info',
+      activeNameSub: 'qualification-list',
       baseInfoForm: {
         companyFullName: '',
         companySimpleName: '',
+        valueList: [],
         date: '',
         status: '',
         fileList: []
-      }
+      },
+      options: [
+        {
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }
+      ]
     }
   },
   created() {
