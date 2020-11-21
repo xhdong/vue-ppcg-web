@@ -82,27 +82,27 @@
                 <el-button type="danger" size="mini" icon="el-icon-delete">删除</el-button>
               </el-row>
               <el-row class="table-wrapper">
-                <el-table
-                  v-loading="loading"
-                  :data="tableData"
-                  border
-                >
-                  <el-table-column type="selection" />
-                  <el-table-column
-                    prop="name"
-                    label="名称"
-                  >
-                    <span class="txt">项目内容</span>
-                  </el-table-column>
-                  <el-table-column
-                    prop="opt"
-                    label="操作"
-                  >
-                    <!--                    <template slot-scope="scope">-->
-                    <!--                      <el-button icon="el-icon-download" size="mini" type="primary">下载</el-button>-->
-                    <!--                    </template>-->
-                  </el-table-column>
-                </el-table>
+                <!--                <el-table-->
+                <!--                  v-loading="loading"-->
+                <!--                  :data="tableData"-->
+                <!--                  border-->
+                <!--                >-->
+                <!--                  <el-table-column type="selection" />-->
+                <!--                  <el-table-column-->
+                <!--                    prop="name"-->
+                <!--                    label="名称"-->
+                <!--                  >-->
+                <!--                    <span class="txt">项目内容</span>-->
+                <!--                  </el-table-column>-->
+                <!--                  <el-table-column-->
+                <!--                    prop="opt"-->
+                <!--                    label="操作"-->
+                <!--                  >-->
+                <!--                    &lt;!&ndash;                    <template slot-scope="scope">&ndash;&gt;-->
+                <!--                    &lt;!&ndash;                      <el-button icon="el-icon-download" size="mini" type="primary">下载</el-button>&ndash;&gt;-->
+                <!--                    &lt;!&ndash;                    </template>&ndash;&gt;-->
+                <!--                  </el-table-column>-->
+                <!--                </el-table>-->
               </el-row>
             </el-card>
           </el-form-item>

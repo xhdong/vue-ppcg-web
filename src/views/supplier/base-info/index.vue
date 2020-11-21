@@ -11,7 +11,7 @@
           </el-tab-pane>
           <el-tab-pane label="其他信息" name="other-info">
             <OtherInfo
-              :base-info-form="baseInfoForm"
+              :other-info-form="otherInfoForm"
               :options="options"
             />
           </el-tab-pane>
@@ -55,12 +55,41 @@ export default {
       activeName: 'base-info',
       activeNameSub: 'base-company-info',
       baseInfoForm: {
-        companyFullName: '',
-        companySimpleName: '',
-        valueList: [],
-        date: '',
-        status: '',
-        fileList: []
+        fullName: '',
+        simpleName: '',
+        businessNature: '',
+        companyType: '',
+        categoryList: [],
+        telephone: '',
+        address: '',
+        detailedAddress: '',
+        postcode: '',
+        otherCompany: '',
+        summary: '',
+        businessRange: ''
+      },
+      otherInfoForm: {
+        businessLicenseNo: '',
+        businessLicenseFile: '',
+        fileList: [],
+        taxNo: '',
+        officeType: '',
+        bankName: '',
+        bankAccount: '',
+        officeArea: '',
+        latestTwoYearsAvgAmount: '',
+        latestTwoYearsAvgAmountUnit: '',
+        latestTwoYearsAvgAmountCurrencyType: '',
+        registeredCapital: '',
+        registeredCapitalUnit: '',
+        registeredCapitalCurrencyType: '',
+        fixedAssets: '',
+        fixedAssetsUnit: '',
+        fixedAssetsCurrencyType: '',
+        liquidity: '',
+        liquidityUnit: '',
+        liquidityCurrencyType: '',
+        employeesNum: ''
       },
       options: [
         {
@@ -79,7 +108,12 @@ export default {
           value: '选项5',
           label: '北京烤鸭'
         }
-      ]
+      ],
+      rules: {
+        fullName: [
+          { required: true, message: '请输入公司全称', trigger: 'blur' }
+        ]
+      }
     }
   },
   created() {
