@@ -1,11 +1,11 @@
 <template>
   <el-row class="app-container">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="审核日志" name="audit-logs">
+      <el-tab-pane label="授权文件记录" name="trust-instrument">
         <!-- 列表 start -->
         <el-row class="table-wrapper">
           <el-row class="header-group">
-            <span class="txt-title">审核日志</span>
+            <span class="txt-title">授权文件记录</span>
           </el-row>
           <el-table
             v-loading="loading"
@@ -41,10 +41,10 @@
 
 <script>
 export default {
-  name: 'AuditLogs',
+  name: 'TrustInstrument',
   data() {
     return {
-      activeName: 'audit-logs',
+      activeName: 'trust-instrument',
       loading: false,
       tableData: [],
       columns: [
@@ -58,7 +58,7 @@ export default {
           }
         },
         {
-          label: '审核状态',
+          label: '用户',
           prop: 'status',
           href: '',
           width: '',
@@ -67,7 +67,7 @@ export default {
           }
         },
         {
-          label: '变更理由',
+          label: '授权文件',
           prop: 'theme',
           href: '',
           width: '',
@@ -76,7 +76,7 @@ export default {
           }
         },
         {
-          label: '备注',
+          label: '用途',
           prop: 'theme',
           href: '',
           width: '',

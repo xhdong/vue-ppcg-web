@@ -3,6 +3,7 @@
     <el-tabs v-model="activeName">
       <el-tab-pane label="母子公司关系绑定" name="parent-subsidiary-company">
         <el-tabs v-model="activeNameSub">
+          <!-- 已绑定列表 start -->
           <el-tab-pane label="已绑定列表" name="boundList">
             <el-row class="table-wrapper">
               <el-row class="header-group">
@@ -43,6 +44,9 @@
               />
             </el-row>
           </el-tab-pane>
+          <!-- 已绑定列表 end -->
+
+          <!-- 已申请列表 start -->
           <el-tab-pane label="已申请列表" name="appliedList">
             <el-row class="table-wrapper">
               <el-row class="header-group">
@@ -83,6 +87,7 @@
               />
             </el-row>
           </el-tab-pane>
+          <!-- 已申请列表 end -->
         </el-tabs>
       </el-tab-pane>
     </el-tabs>
@@ -109,7 +114,7 @@ export default {
       pageForm: {
         name: ''
       },
-      dialogVisible: true,
+      dialogVisible: false,
       columns: [
         {
           label: '关系',

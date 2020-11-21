@@ -108,6 +108,7 @@ export default {
           label: '招标工程',
           prop: 'type',
           href: '',
+          width: '',
           formatter: (row) => {
             return row.type
           }
@@ -116,6 +117,7 @@ export default {
           label: '疑问标题',
           prop: 'theme',
           href: '',
+          width: '',
           formatter: (row) => {
             return row.theme
           }
@@ -124,6 +126,7 @@ export default {
           label: '类型',
           prop: 'theme',
           href: '',
+          width: '',
           formatter: (row) => {
             return row.theme
           }
@@ -132,14 +135,16 @@ export default {
           label: '提问人',
           prop: 'theme',
           href: '',
+          width: '',
           formatter: (row) => {
             return row.theme
           }
         },
         {
           label: '操作',
-          prop: 'opt',
-          formatter: (row) => {
+          prop: 'operate',
+          width: '',
+          formatter: () => {
             return ''
           }
         }

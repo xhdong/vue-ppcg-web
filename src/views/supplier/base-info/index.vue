@@ -53,8 +53,7 @@ export default {
   data() {
     return {
       activeName: 'base-info',
-      // activeNameSub: 'base-company-info',
-      activeNameSub: 'qualification-list',
+      activeNameSub: 'base-company-info',
       baseInfoForm: {
         companyFullName: '',
         companySimpleName: '',

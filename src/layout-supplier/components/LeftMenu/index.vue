@@ -110,7 +110,7 @@ export default {
               label: '授权文件',
               key: '',
               id: 0,
-              path: '/supplier/permission-file'
+              path: '/supplier/trust-instrument'
             },
             {
               label: '分公司/代理商管理',

@@ -149,9 +149,9 @@ export const constantRoutes = [
         meta: { title: '审核日志' }
       },
       {
-        path: 'permission-file',
-        component: () => import('@/views/supplier/permission-file/index.vue'),
-        name: 'PermissionFile',
+        path: 'trust-instrument',
+        component: () => import('@/views/supplier/trust-instrument/index.vue'),
+        name: 'TrustInstrument',
         meta: { title: '授权文件' }
       },
       {
@@ -166,12 +166,12 @@ export const constantRoutes = [
         name: 'ParentSubsidiaryCompany',
         meta: { title: '母子公司关系绑定' }
       },
-      // {
-      //   path: 'account-manage',
-      //   component: () => import('@/views/supplier/account-manage/index.vue'),
-      //   name: 'AccountManage',
-      //   meta: { title: '账号管理' }
-      // },
+      {
+        path: 'account-manage',
+        component: () => import('@/views/supplier/account-manage/index.vue'),
+        name: 'AccountManage',
+        meta: { title: '账号管理' }
+      },
       {
         path: 'change-password',
         component: () => import('@/views/supplier/change-password/index.vue'),
