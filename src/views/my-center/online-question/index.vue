@@ -25,6 +25,12 @@
           </el-form>
         </el-row>
         <el-row class="table-wrapper">
+          <el-row class="header-group">
+            <span class="txt-title">疑问列表</span>
+            <el-row class="btn-group">
+              <el-button type="primary" size="small" icon="el-icon-plus" class="btn-add" @click="handleNavigateToAdd">新增</el-button>
+            </el-row>
+          </el-row>
           <el-table
             v-loading="loading"
             :data="tableData"
@@ -37,11 +43,14 @@
               :label="col.label"
               :formatter="col.formatter"
             >
-              <!--              <template slot-scope="scope">-->
-              <!--                <div v-if="col.prop === 'theme'">-->
-              <!--                  <router-link :to="scope.row.src"></router-link>-->
-              <!--                </div>-->
-              <!--              </template>-->
+              <template slot-scope="scope">
+                <template v-if="col.prop === 'theme'">
+                  <el-link :href="col.href" target="_blank" v-html="col.formatter(scope.row)" />
+                </template>
+                <template v-else>
+                  <span v-html="col.formatter(scope.row)" />
+                </template>
+              </template>
             </el-table-column>
           </el-table>
         </el-row>
@@ -74,23 +83,42 @@ export default {
       columns: [
         {
           label: '招标工程',
-          prop: 'type'
+          prop: 'type',
+          href: '',
+          formatter: (row) => {
+            return row.type
+          }
         },
         {
           label: '疑问标题',
-          prop: 'theme'
+          prop: 'theme',
+          href: '',
+          formatter: (row) => {
+            return row.theme
+          }
         },
         {
           label: '类型',
-          prop: 'theme'
+          prop: 'theme',
+          href: '',
+          formatter: (row) => {
+            return row.theme
+          }
         },
         {
           label: '提问人',
-          prop: 'theme'
+          prop: 'theme',
+          href: '',
+          formatter: (row) => {
+            return row.theme
+          }
         },
         {
           label: '操作',
-          prop: 'opt'
+          prop: 'opt',
+          formatter: (row) => {
+            return ''
+          }
         }
       ]
     }
@@ -117,9 +145,8 @@ export default {
     onReset(formName) {
       this.$refs[formName] && this.$refs[formName].resetFields()
     },
-    handleNavigateToDetail(row) {
-      console.log(row)
-      // this.$router.push({ path: `${row}` })
+    handleNavigateToAdd() {
+      this.$router.push({ path: `/my-center/question-info` })
     }
   }
 }
@@ -130,6 +157,7 @@ export default {
     padding: 20px;
 
     .form-wrapper {
+      margin-bottom: 15px;
       .form-group {
         ::v-deep .el-form-item__content {
           width: 370px;
@@ -147,6 +175,19 @@ export default {
 
     .table-wrapper {
       margin: 15px 0;
+      .header-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        .txt-title {
+          line-height: 20px;
+          font-size: 14px;
+          color: #313303;
+          padding: 0 10px;
+          border-left: 3px solid #409EFF;
+          flex: 1;
+        }
+      }
     }
 
     .page-wrapper {

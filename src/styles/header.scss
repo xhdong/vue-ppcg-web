@@ -2,7 +2,8 @@
   min-width: $minWidth;
   width: 100%;
   height: $headerHeight;
-  background: $yellow;
+  background: url("~@/assets/banner.jpg") no-repeat;
+  background-size: 100%;
   .header-wrap {
     margin: 0 auto;
     width: $minWidth;

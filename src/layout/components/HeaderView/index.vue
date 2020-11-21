@@ -2,7 +2,9 @@
   <div class="header">
     <div class="header-wrap">
       <div class="logo">
-        <a href="#/">占位</a>
+        <a href="#/">
+          <img :src="logo" alt="logo">
+        </a>
       </div>
       <el-input
         v-model="search"
@@ -14,10 +16,12 @@
 </template>
 
 <script>
+import logo from '@/assets/ppcg-logo.png'
 export default {
   name: 'HeaderView',
   data() {
     return {
+      logo,
       views: {
         path: '/index',
         title: '首页'

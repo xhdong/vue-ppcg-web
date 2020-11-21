@@ -51,11 +51,14 @@
               :label="col.label"
               :formatter="col.formatter"
             >
-              <!--              <template slot-scope="scope">-->
-              <!--                <div v-if="col.prop === 'theme'">-->
-              <!--                  <router-link :to="scope.row.src"></router-link>-->
-              <!--                </div>-->
-              <!--              </template>-->
+              <template slot-scope="scope">
+                <template v-if="col.prop === 'theme'">
+                  <el-link :href="col.href" target="_blank" v-html="col.formatter(scope.row)" />
+                </template>
+                <template v-else>
+                  <span v-html="col.formatter(scope.row)" />
+                </template>
+              </template>
             </el-table-column>
           </el-table>
         </el-row>
@@ -88,27 +91,34 @@ export default {
       columns: [
         {
           label: '类型',
-          prop: 'type'
+          prop: 'type',
+          href: '',
+          formatter: (row) => {
+            return row.type
+          }
         },
         {
           label: '主题',
           prop: 'theme',
-          click: (row) => {
-            this.handleNavigateToDetail(row)
+          href: '#/my-center/message-detail',
+          formatter: (row) => {
+            return row.theme
           }
         },
         {
           label: '日期',
-          prop: 'date'
+          prop: 'date',
+          href: '',
+          formatter: (row) => {
+            return row.date
+          }
         },
         {
           label: '状态',
           prop: 'status',
-          formatter: (row, key) => {
-            if (row[key] === 0) {
-              return '未读'
-            }
-            return '已读'
+          href: '',
+          formatter: (row) => {
+            return row.status
           }
         }
       ]
@@ -135,10 +145,6 @@ export default {
     },
     onReset(formName) {
       this.$refs[formName] && this.$refs[formName].resetFields()
-    },
-    handleNavigateToDetail(row) {
-      console.log(row)
-      // this.$router.push({ path: `${row}` })
     }
   }
 }

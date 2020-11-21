@@ -125,6 +125,12 @@ export const constantRoutes = [
         meta: { title: '澄清公告' }
       },
       {
+        path: 'notice-detail',
+        component: () => import('@/views/my-center/notice-detail/index.vue'),
+        name: 'NoticeDetail',
+        meta: { title: '公告详情' }
+      },
+      {
         path: 'online-clarification',
         component: () => import('@/views/my-center/online-clarification/index.vue'),
         name: 'OnlineClarification',

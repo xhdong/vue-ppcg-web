@@ -15,7 +15,7 @@
                 <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="提问类型" />
               </el-form-item>
               <el-form-item label="提问内容：" prop="type">
-                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="提问内容" />
+                <el-input v-model="pageForm.theme" type="textarea" class="form-control" clearable placeholder="提问内容" />
               </el-form-item>
               <el-form-item label="提问文档：" prop="type">
                 <el-upload
@@ -35,8 +35,9 @@
               </el-form-item>
             </el-row>
             <el-row class="btn-group">
+              <el-button type="default" size="small" icon="el-icon-refresh" @click="handleNavigateToList()">返回</el-button>
               <el-button type="default" size="small" icon="el-icon-refresh" @click="onReset('pageForm')">重置</el-button>
-              <el-button type="primary" size="small" icon="el-icon-search" @click="onSubmit">查询</el-button>
+              <el-button type="primary" size="small" icon="el-icon-search" @click="onSubmit">提交</el-button>
             </el-row>
           </el-form>
         </el-row>
@@ -106,9 +107,8 @@ export default {
     onReset(formName) {
       this.$refs[formName] && this.$refs[formName].resetFields()
     },
-    handleNavigateToDetail(row) {
-      console.log(row)
-      // this.$router.push({ path: `${row}` })
+    handleNavigateToList() {
+      this.$router.push({ path: `/my-center/online-question` })
     },
     handleRemove(file, fileList) {
       console.log(file, fileList)

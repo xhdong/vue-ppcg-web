@@ -3,12 +3,14 @@
     <el-row class="header-container">
       <el-row class="header-left">
         <el-row class="logo-wrapper">
-          <a href="#/" class="logo">占位</a>
+          <a href="#/" class="logo">
+            <img :src="logo" alt="logo">
+          </a>
         </el-row>
       </el-row>
       <el-row class="header-center">
         <el-row class="input-group">
-          <el-input placeholder="请输入内容" v-model="search" size="small" class="form-control">
+          <el-input v-model="search" placeholder="请输入内容" size="small" class="form-control">
             <el-button slot="append" type="primary" icon="el-icon-search">搜索</el-button>
           </el-input>
         </el-row>
@@ -28,10 +30,12 @@
 </template>
 
 <script>
+import logo from '@/assets/ppcg-logo.png'
 export default {
   name: 'HeaderView',
   data() {
     return {
+      logo,
       views: {
         path: '/index',
         title: '首页'
@@ -48,12 +52,13 @@ export default {
 </script>
 <style lang="scss" scoped>
   .header-wrapper {
+    background-color: #1890ff;
     .header-container {
       display: flex;
       align-items: center;
       width: 1200px;
       margin: 0 auto;
-      padding: 15px 0;
+      padding: 10px 0;
       .header-left {
         .logo-wrapper {
           width: 330px;
@@ -73,6 +78,9 @@ export default {
         display: flex;
         .user-info, .action-wrapper {
           padding: 0 10px;
+          ::v-deep .el-link {
+            color: #fff;
+          }
         }
         .user-info {
 

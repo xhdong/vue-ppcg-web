@@ -42,7 +42,16 @@
               :prop="col.prop"
               :label="col.label"
               :formatter="col.formatter"
-            />
+            >
+              <template slot-scope="scope">
+                <template v-if="col.prop === 'theme'">
+                  <el-link :href="col.href" target="_blank" v-html="col.formatter(scope.row)" />
+                </template>
+                <template v-else>
+                  <span v-html="col.formatter(scope.row)" />
+                </template>
+              </template>
+            </el-table-column>
           </el-table>
         </el-row>
         <el-row class="page-wrapper">
@@ -74,19 +83,35 @@ export default {
       columns: [
         {
           label: '招标工程',
-          prop: 'type'
+          prop: 'type',
+          href: '',
+          formatter: (row) => {
+            return row.type
+          }
         },
         {
           label: '标段名称',
-          prop: 'theme'
+          prop: 'theme',
+          href: '#/my-center/tender-detail',
+          formatter: (row) => {
+            return row.theme
+          }
         },
         {
           label: '标段状态',
-          prop: 'date'
+          prop: 'date',
+          href: '',
+          formatter: (row) => {
+            return row.date
+          }
         },
         {
           label: '操作',
-          prop: 'status'
+          prop: 'status',
+          href: '',
+          formatter: (row) => {
+            return row.status
+          }
         }
       ]
     }

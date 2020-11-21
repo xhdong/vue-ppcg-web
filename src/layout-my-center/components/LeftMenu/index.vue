@@ -75,7 +75,7 @@ export default {
               path: '/my-center/clarification-notice'
             },
             {
-              label: '在线质疑',
+              label: '在线提疑',
               key: '',
               id: 0,
               path: '/my-center/online-question'
