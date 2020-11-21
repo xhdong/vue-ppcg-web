@@ -1,7 +1,7 @@
 <template>
   <el-row class="app-container">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="投标详情" name="tender">
+      <el-tab-pane label="投标详情" name="bidding">
         <el-row class="header-group">
           <span class="txt-title">主体工程</span>
           <el-row class="btn-group">
@@ -135,12 +135,12 @@
 </template>
 
 <script>
-import TenderReceipt from '@/components/my-center/tender-detail/tender-receipt'
-import DepositUpload from '@/components/my-center/tender-detail/deposit-upload'
-import ResponseToTender from '@/components/my-center/tender-detail/response-to-tender'
+import TenderReceipt from '@/components/supplier/tender-detail/tender-receipt'
+import DepositUpload from '@/components/supplier/tender-detail/deposit-upload'
+import ResponseToTender from '@/components/supplier/tender-detail/response-to-tender'
 
 export default {
-  name: 'TenderDetail',
+  name: 'BiddingDetail',
   components: {
     TenderReceipt,
     DepositUpload,
@@ -148,7 +148,7 @@ export default {
   },
   data() {
     return {
-      activeName: 'tender',
+      activeName: 'bidding',
       pageForm: {
         theme: '',
         type: '',
@@ -242,7 +242,7 @@ export default {
     },
     handleNavigateToOnlineQuestion() {
       this.$router.push({
-        path: '/my-center/online-question'
+        path: '/supplier/online-question'
       })
     }
   }

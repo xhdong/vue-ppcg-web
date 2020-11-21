@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import AddDialog from '@/components/my-center/parent-subsidiary-company/add-dialog'
+import AddDialog from '@/components/supplier/parent-subsidiary-company/add-dialog'
 export default {
   name: 'ParentSubsidiaryCompany',
   components: {
@@ -171,7 +171,7 @@ export default {
       this.loading = false
     },
     handleNavigateToAdd() {
-      this.$router.push({ path: `/my-center/question-info` })
+      this.$router.push({ path: `/supplier/question-info` })
     }
   }
 }

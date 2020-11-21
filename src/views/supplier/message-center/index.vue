@@ -1,20 +1,39 @@
 <template>
   <el-row class="app-container">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="在线提疑" name="online-question">
+      <el-tab-pane label="消息中心" name="message">
+        <!-- 表单 start -->
         <el-row class="form-wrapper">
           <el-form ref="pageForm" :inline="true" label-width="90px" size="small" :model="pageForm">
             <el-row class="form-group">
-              <el-form-item label="疑标问题：" prop="theme">
-                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="疑标问题" />
-              </el-form-item>
-              <el-form-item label="招标工程：" prop="theme">
-                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="招标工程" />
+              <el-form-item label="主题：" prop="theme">
+                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="主题" />
               </el-form-item>
               <el-form-item label="消息类型：" prop="type">
                 <el-select v-model="pageForm.type" class="form-control" clearable placeholder="消息类型">
                   <el-option label="区域一" value="shanghai" />
                   <el-option label="区域二" value="beijing" />
+                </el-select>
+              </el-form-item>
+              <el-form-item label="接收时间：" prop="date">
+                <el-date-picker
+                  v-model="pageForm.date"
+                  type="datetimerange"
+                  class="form-control"
+                  clearable
+                  range-separator="至"
+                  start-placeholder="开始日期"
+                  end-placeholder="结束日期"
+                />
+              </el-form-item>
+              <el-form-item label="阅读状态：" prop="status">
+                <el-select v-model="pageForm.status" class="form-control" clearable placeholder="阅读状态">
+                  <el-option
+                    v-for="item in readStatusOptions"
+                    :key="item.key"
+                    :label="item.label"
+                    :value="item.key"
+                  />
                 </el-select>
               </el-form-item>
             </el-row>
@@ -24,23 +43,22 @@
             </el-row>
           </el-form>
         </el-row>
+        <!-- 表单 end -->
+
+        <!-- 列表 start -->
         <el-row class="table-wrapper">
-          <el-row class="header-group">
-            <span class="txt-title">疑问列表</span>
-            <el-row class="btn-group">
-              <el-button type="primary" size="small" icon="el-icon-plus" class="btn-add" @click="handleNavigateToAdd">新增</el-button>
-            </el-row>
-          </el-row>
           <el-table
             v-loading="loading"
             :data="tableData"
             border
           >
+            <el-table-column type="index" />
             <el-table-column
               v-for="(col,idx) in columns"
               :key="idx"
               :prop="col.prop"
               :label="col.label"
+              :width="col.width"
               :formatter="col.formatter"
             >
               <template slot-scope="scope">
@@ -54,24 +72,31 @@
             </el-table-column>
           </el-table>
         </el-row>
+        <!-- 列表 end -->
+
+        <!-- 分页 start -->
         <el-row class="page-wrapper">
           <el-pagination
             background
             layout="prev, pager, next"
             :total="1000"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
           />
         </el-row>
+        <!-- 分页 end -->
       </el-tab-pane>
     </el-tabs>
   </el-row>
 </template>
 
 <script>
+import { readStatusOptions } from '@/utils/dict'
 export default {
-  name: 'OnlineQuestion',
+  name: 'Messages',
   data() {
     return {
-      activeName: 'online-question',
+      activeName: 'message',
       pageForm: {
         theme: '',
         type: '',
@@ -80,62 +105,59 @@ export default {
       },
       loading: false,
       tableData: [],
+      readStatusOptions,
       columns: [
         {
-          label: '招标工程',
+          label: '类型',
           prop: 'type',
+          width: '',
           href: '',
           formatter: (row) => {
             return row.type
           }
         },
         {
-          label: '疑问标题',
+          label: '主题',
           prop: 'theme',
-          href: '',
+          width: '400',
+          href: '#/supplier/message-detail',
           formatter: (row) => {
             return row.theme
           }
         },
         {
-          label: '类型',
-          prop: 'theme',
+          label: '日期',
+          prop: 'date',
+          width: '',
           href: '',
           formatter: (row) => {
-            return row.theme
+            return row.date
           }
         },
         {
-          label: '提问人',
-          prop: 'theme',
+          label: '状态',
+          prop: 'status',
+          width: '',
           href: '',
           formatter: (row) => {
-            return row.theme
-          }
-        },
-        {
-          label: '操作',
-          prop: 'opt',
-          formatter: (row) => {
-            return ''
+            return row.status === 1 ? '已读' : '未读'
           }
         }
       ]
     }
   },
   created() {
-    this.getMessageList()
+    this.getList()
   },
   methods: {
-    getMessageList() {
+    getList() {
       this.loading = true
       this.tableData = [
         {
-          type: '母子关系绑定',
-          theme: '【通知】母子关系绑定通知',
-          date: '2020-11-16',
-          status: '未读',
-          src: ''
+          type: '资料管理',
+          theme: '您已成功注册富力集团招投标平台客商账号。请尽快完善公司资料并提交审核。',
+          date: '2020-11-19',
+          status: '未读'
         }
       ]
       this.loading = false
@@ -145,8 +167,11 @@ export default {
     onReset(formName) {
       this.$refs[formName] && this.$refs[formName].resetFields()
     },
-    handleNavigateToAdd() {
-      this.$router.push({ path: `/my-center/question-info` })
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`)
     }
   }
 }
@@ -157,7 +182,6 @@ export default {
     padding: 20px;
 
     .form-wrapper {
-      margin-bottom: 15px;
       .form-group {
         ::v-deep .el-form-item__content {
           width: 370px;
@@ -175,19 +199,6 @@ export default {
 
     .table-wrapper {
       margin: 15px 0;
-      .header-group {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        .txt-title {
-          line-height: 20px;
-          font-size: 14px;
-          color: #313303;
-          padding: 0 10px;
-          border-left: 3px solid #409EFF;
-          flex: 1;
-        }
-      }
     }
 
     .page-wrapper {

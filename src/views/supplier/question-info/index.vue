@@ -108,7 +108,7 @@ export default {
       this.$refs[formName] && this.$refs[formName].resetFields()
     },
     handleNavigateToList() {
-      this.$router.push({ path: `/my-center/online-question` })
+      this.$router.push({ path: `/supplier/online-question` })
     },
     handleRemove(file, fileList) {
       console.log(file, fileList)

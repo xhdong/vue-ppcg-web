@@ -40,7 +40,7 @@ export default {
               label: '消息中心',
               key: '',
               id: 0,
-              path: '/my-center/message-center'
+              path: '/supplier/message-center'
             }
           ]
         },
@@ -54,37 +54,37 @@ export default {
               label: '在线报名',
               key: '',
               id: 0,
-              path: '/my-center/online-registration'
+              path: '/supplier/online-registration'
             },
             {
               label: '我的投标',
               key: '',
               id: 0,
-              path: '/my-center/my-tender'
+              path: '/supplier/my-bidding'
             },
             {
               label: '中止公告',
               key: '',
               id: 0,
-              path: '/my-center/suspension-notice'
+              path: '/supplier/suspend-notice'
             },
             {
               label: '澄清公告',
               key: '',
               id: 0,
-              path: '/my-center/clarification-notice'
+              path: '/supplier/clarify-notice'
             },
             {
               label: '在线提疑',
               key: '',
               id: 0,
-              path: '/my-center/online-question'
+              path: '/supplier/online-question'
             },
             {
               label: '在线澄清',
               key: '',
               id: 0,
-              path: '/my-center/online-clarification'
+              path: '/supplier/online-clarify'
             }
           ]
         },
@@ -98,31 +98,31 @@ export default {
               label: '基本资料',
               key: '',
               id: 0,
-              path: '/my-center/base-info'
+              path: '/supplier/base-info'
             },
             {
               label: '审核日志',
               key: '',
               id: 0,
-              path: '/my-center/audit-logs'
+              path: '/supplier/audit-logs'
             },
             {
               label: '授权文件',
               key: '',
               id: 0,
-              path: '/my-center/permission-file'
+              path: '/supplier/permission-file'
             },
             {
               label: '分公司/代理商管理',
               key: '',
               id: 0,
-              path: '/my-center/agent-manage'
+              path: '/supplier/agent-manage'
             },
             {
               label: '母子公司关系绑定',
               key: '',
               id: 0,
-              path: '/my-center/parent-subsidiary-company'
+              path: '/supplier/parent-subsidiary-company'
             }
           ]
         },
@@ -136,19 +136,19 @@ export default {
               label: '账号管理',
               key: '',
               id: 0,
-              path: '/my-center/account-manage'
+              path: '/supplier/account-manage'
             },
             {
               label: '修改密码',
               key: '',
               id: 0,
-              path: '/my-center/change-password'
+              path: '/supplier/change-password'
             },
             {
               label: '收藏夹',
               key: '',
               id: 0,
-              path: '/my-center/favorite-list'
+              path: '/supplier/favorite-list'
             }
           ]
         }

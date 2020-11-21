@@ -1,26 +1,7 @@
 <template>
-  <el-row class="product-service">
+  <el-row class="contacts-list">
     <el-row class="header-wrapper">
-      <span class="txt-title">过往合作项目情况</span>
-      <el-button type="primary" size="small" icon="el-icon-plus" class="btn-add">新增</el-button>
-    </el-row>
-    <el-row class="table-wrapper">
-      <el-table
-        v-loading="loading"
-        :data="tableData"
-        border
-      >
-        <el-table-column
-          v-for="(col,idx) in columns"
-          :key="idx"
-          :prop="col.prop"
-          :label="col.label"
-          :formatter="col.formatter"
-        />
-      </el-table>
-    </el-row>
-    <el-row class="header-wrapper">
-      <span class="txt-title" data-after="*">近三年已完成重点项目情况</span>
+      <span class="txt-title">联系人</span>
       <el-button type="primary" size="small" icon="el-icon-plus" class="btn-add">新增</el-button>
     </el-row>
     <el-row class="table-wrapper">
@@ -43,42 +24,29 @@
       <el-button type="primary" size="small">下一步</el-button>
       <el-button type="primary" size="small">提交</el-button>
     </el-row>
-    <!-- 过往合作过的项目 start -->
-    <PastProjectDialog
-      :dialog-past-project-visible="dialogPastProjectVisible"
+    <AddContactDialog
       :page-form="pageForm"
       :options="options"
+      :dialog-visible="dialogVisible"
     />
-    <!-- 过往合作过的项目 end -->
-
-    <!-- 近三年合作过的项目 start -->
-    <RecentThreeYearsProjectDialog
-      :dialog-recent-three-years-project-visible="dialogRecentThreeYearsProjectVisible"
-      :page-form="pageForm"
-      :options="options"
-    />
-    <!-- 近三年合作过的项目 end -->
   </el-row>
 </template>
 
 <script>
-import PastProjectDialog from '@/components/my-center/base-info/past-project-dialog'
-import RecentThreeYearsProjectDialog from '@/components/my-center/base-info/recent-three-years-project-dialog'
+import AddContactDialog from '@/components/supplier/base-info/add-contact-dialog'
 export default {
-  name: 'ProductService',
+  name: 'ContactsList',
   components: {
-    PastProjectDialog,
-    RecentThreeYearsProjectDialog
+    AddContactDialog
   },
   data() {
     return {
-      dialogPastProjectVisible: false,
-      dialogRecentThreeYearsProjectVisible: false,
       pageForm: {
         name: '',
         list: [],
         flag: 1
       },
+      dialogVisible: false,
       options: [
         {
           value: '选项1',
@@ -159,7 +127,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .product-service {
+  .contacts-list {
     .header-wrapper {
       display: flex;
       align-items: center;
@@ -170,14 +138,6 @@ export default {
         flex: 1;
         padding-left: 10px;
         border-left: 2px solid #409EFF;
-        &:after {
-          content: attr(data-after);
-          display: inline-block;
-          vertical-align: middle;
-          padding: 0 2px;
-          font-size: 18px;
-          color: #F56C6C;
-        }
       }
     }
     .table-wrapper {

@@ -1,34 +1,35 @@
 <template>
   <el-row class="app-container">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="消息中心" name="message">
+      <el-tab-pane label="我的投标" name="bidding">
+        <!-- 表单 start -->
         <el-row class="form-wrapper">
-          <el-form ref="pageForm" :inline="true" label-width="90px" size="small" :model="pageForm">
+          <el-form ref="pageForm" :inline="true" label-width="120px" size="small" :model="pageForm">
             <el-row class="form-group">
-              <el-form-item label="主题：" prop="theme">
-                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="主题" />
+              <el-form-item label="招标工程名称：" prop="theme">
+                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="招标工程名称" />
               </el-form-item>
-              <el-form-item label="消息类型：" prop="type">
-                <el-select v-model="pageForm.type" class="form-control" clearable placeholder="消息类型">
-                  <el-option label="区域一" value="shanghai" />
-                  <el-option label="区域二" value="beijing" />
+              <el-form-item label="招标分类：" prop="type">
+                <el-select v-model="pageForm.type" class="form-control" clearable placeholder="招标分类">
+                  <el-option
+                    v-for="item in biddingCategoryOptions"
+                    :key="item.key"
+                    :label="item.label"
+                    :value="item.key"
+                  />
                 </el-select>
               </el-form-item>
-              <el-form-item label="接收时间：" prop="date">
-                <el-date-picker
-                  v-model="pageForm.date"
-                  type="datetimerange"
-                  class="form-control"
-                  clearable
-                  range-separator="至"
-                  start-placeholder="开始日期"
-                  end-placeholder="结束日期"
-                />
+              <el-form-item label="招标单位：" prop="date">
+                <el-input v-model="pageForm.theme" class="form-control" clearable placeholder="招标单位" />
               </el-form-item>
-              <el-form-item label="阅读状态：" prop="status">
-                <el-select v-model="pageForm.status" class="form-control" clearable placeholder="阅读状态">
-                  <el-option label="区域一" value="shanghai" />
-                  <el-option label="区域二" value="beijing" />
+              <el-form-item label="状态：" prop="status">
+                <el-select v-model="pageForm.status" class="form-control" clearable placeholder="状态">
+                  <el-option
+                    v-for="item in biddingStatusOptions"
+                    :key="item.key"
+                    :label="item.label"
+                    :value="item.key"
+                  />
                 </el-select>
               </el-form-item>
             </el-row>
@@ -38,7 +39,10 @@
             </el-row>
           </el-form>
         </el-row>
-        <el-row class="table-wrapper">
+        <!-- 表单 end -->
+
+        <!-- 列表 start -->
+        <el-row class="table-wrapper" data-before="投标列表">
           <el-table
             v-loading="loading"
             :data="tableData"
@@ -49,6 +53,7 @@
               :key="idx"
               :prop="col.prop"
               :label="col.label"
+              :width="col.width"
               :formatter="col.formatter"
             >
               <template slot-scope="scope">
@@ -62,24 +67,33 @@
             </el-table-column>
           </el-table>
         </el-row>
+        <!-- 列表 end -->
+
+        <!-- 分页 start -->
         <el-row class="page-wrapper">
           <el-pagination
             background
             layout="prev, pager, next"
             :total="1000"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
           />
         </el-row>
+        <!-- 分页 end -->
       </el-tab-pane>
     </el-tabs>
   </el-row>
 </template>
 
 <script>
+import { biddingCategoryOptions, biddingStatusOptions } from '@/utils/dict'
 export default {
-  name: 'MessageCenter',
+  name: 'MyBidding',
   data() {
     return {
-      activeName: 'message',
+      activeName: 'bidding',
+      biddingCategoryOptions,
+      biddingStatusOptions,
       pageForm: {
         theme: '',
         type: '',
@@ -90,35 +104,65 @@ export default {
       tableData: [],
       columns: [
         {
-          label: '类型',
+          label: '招标工程',
           prop: 'type',
           href: '',
+          width: '',
           formatter: (row) => {
             return row.type
           }
         },
         {
-          label: '主题',
+          label: '招标单位',
           prop: 'theme',
-          href: '#/my-center/message-detail',
+          width: '300',
+          href: '#/supplier/bidding-detail',
           formatter: (row) => {
             return row.theme
           }
         },
         {
-          label: '日期',
+          label: '标段名称',
           prop: 'date',
           href: '',
+          width: '',
           formatter: (row) => {
             return row.date
           }
         },
         {
-          label: '状态',
-          prop: 'status',
+          label: '标段状态',
+          prop: 'date',
           href: '',
+          width: '',
           formatter: (row) => {
-            return row.status
+            return row.date
+          }
+        },
+        {
+          label: '发标时间',
+          prop: 'date',
+          href: '',
+          width: '',
+          formatter: (row) => {
+            return row.date
+          }
+        },
+        {
+          label: '回标截止',
+          prop: 'date',
+          href: '',
+          width: '',
+          formatter: (row) => {
+            return row.date
+          }
+        },
+        {
+          label: '操作',
+          prop: 'operate',
+          href: '',
+          formatter: () => {
+            return ''
           }
         }
       ]
@@ -135,8 +179,7 @@ export default {
           type: '母子关系绑定',
           theme: '【通知】母子关系绑定通知',
           date: '2020-11-16',
-          status: '未读',
-          src: ''
+          status: '未读'
         }
       ]
       this.loading = false
@@ -145,6 +188,12 @@ export default {
     },
     onReset(formName) {
       this.$refs[formName] && this.$refs[formName].resetFields()
+    },
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`)
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`)
     }
   }
 }
@@ -157,7 +206,7 @@ export default {
     .form-wrapper {
       .form-group {
         ::v-deep .el-form-item__content {
-          width: 370px;
+          min-width: 320px;
 
           .form-control {
             width: 100%;
@@ -166,12 +215,24 @@ export default {
       }
 
       .btn-group {
-        padding-left: 90px;
+        padding-left: 120px;
       }
     }
 
     .table-wrapper {
       margin: 15px 0;
+
+      &:before {
+        content: attr(data-before);
+        display: block;
+        line-height: 24px;
+        font-size: 14px;
+        color: #313303;
+        padding: 0 10px;
+        border-left: 3px solid #409EFF;
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
     }
 
     .page-wrapper {

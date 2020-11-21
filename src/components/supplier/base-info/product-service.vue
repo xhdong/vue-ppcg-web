@@ -1,7 +1,7 @@
 <template>
-  <el-row class="contacts-list">
+  <el-row class="product-service">
     <el-row class="header-wrapper">
-      <span class="txt-title">资质详细信息</span>
+      <span class="txt-title">过往合作项目情况</span>
       <el-button type="primary" size="small" icon="el-icon-plus" class="btn-add">新增</el-button>
     </el-row>
     <el-row class="table-wrapper">
@@ -10,7 +10,25 @@
         :data="tableData"
         border
       >
-        <el-table-column type="index" />
+        <el-table-column
+          v-for="(col,idx) in columns"
+          :key="idx"
+          :prop="col.prop"
+          :label="col.label"
+          :formatter="col.formatter"
+        />
+      </el-table>
+    </el-row>
+    <el-row class="header-wrapper">
+      <span class="txt-title" data-after="*">近三年已完成重点项目情况</span>
+      <el-button type="primary" size="small" icon="el-icon-plus" class="btn-add">新增</el-button>
+    </el-row>
+    <el-row class="table-wrapper">
+      <el-table
+        v-loading="loading"
+        :data="tableData"
+        border
+      >
         <el-table-column
           v-for="(col,idx) in columns"
           :key="idx"
@@ -21,33 +39,46 @@
       </el-table>
     </el-row>
     <el-row class="btn-group">
+      <el-button type="primary" size="small">上一步</el-button>
       <el-button type="primary" size="small">下一步</el-button>
       <el-button type="primary" size="small">提交</el-button>
     </el-row>
-    <AddQualificationDialog
+    <!-- 过往合作过的项目 start -->
+    <PastProjectDialog
+      :dialog-past-project-visible="dialogPastProjectVisible"
       :page-form="pageForm"
       :options="options"
-      :dialog-visible="dialogVisible"
     />
+    <!-- 过往合作过的项目 end -->
+
+    <!-- 近三年合作过的项目 start -->
+    <RecentThreeYearsProjectDialog
+      :dialog-recent-three-years-project-visible="dialogRecentThreeYearsProjectVisible"
+      :page-form="pageForm"
+      :options="options"
+    />
+    <!-- 近三年合作过的项目 end -->
   </el-row>
 </template>
 
 <script>
-import AddQualificationDialog from '@/components/my-center/base-info/add-qualification-dialog'
+import PastProjectDialog from '@/components/supplier/base-info/past-project-dialog'
+import RecentThreeYearsProjectDialog from '@/components/supplier/base-info/recent-three-years-project-dialog'
 export default {
-  name: 'QualificationList',
+  name: 'ProductService',
   components: {
-    AddQualificationDialog
+    PastProjectDialog,
+    RecentThreeYearsProjectDialog
   },
   data() {
     return {
+      dialogPastProjectVisible: false,
+      dialogRecentThreeYearsProjectVisible: false,
       pageForm: {
         name: '',
         list: [],
         flag: 1
       },
-      dialogVisible: false,
-      loading: false,
       options: [
         {
           value: '选项1',
@@ -69,28 +100,32 @@ export default {
       tableData: [],
       columns: [
         {
-          label: '产品与服务名',
+          label: '姓名',
           prop: 'name'
         },
         {
-          label: '主资质',
+          label: '默认',
           prop: 'theme'
         },
         {
-          label: '综合等级',
+          label: '联系人类型',
           prop: 'type'
         },
         {
-          label: '资质证书名称',
+          label: '性别',
           prop: 'gender'
         },
         {
-          label: '资质证书编号',
+          label: '职位',
           prop: 'position'
         },
         {
-          label: '到期日',
+          label: '手机号码',
           prop: 'mobile'
+        },
+        {
+          label: '办公固话',
+          prop: 'telephone'
         },
         {
           label: '邮箱',
@@ -124,7 +159,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .contacts-list {
+  .product-service {
     .header-wrapper {
       display: flex;
       align-items: center;
@@ -135,6 +170,14 @@ export default {
         flex: 1;
         padding-left: 10px;
         border-left: 2px solid #409EFF;
+        &:after {
+          content: attr(data-after);
+          display: inline-block;
+          vertical-align: middle;
+          padding: 0 2px;
+          font-size: 18px;
+          color: #F56C6C;
+        }
       }
     }
     .table-wrapper {

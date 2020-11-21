@@ -1,7 +1,7 @@
 <template>
   <el-row class="contacts-list">
     <el-row class="header-wrapper">
-      <span class="txt-title">联系人</span>
+      <span class="txt-title">资质详细信息</span>
       <el-button type="primary" size="small" icon="el-icon-plus" class="btn-add">新增</el-button>
     </el-row>
     <el-row class="table-wrapper">
@@ -10,6 +10,7 @@
         :data="tableData"
         border
       >
+        <el-table-column type="index" />
         <el-table-column
           v-for="(col,idx) in columns"
           :key="idx"
@@ -20,11 +21,10 @@
       </el-table>
     </el-row>
     <el-row class="btn-group">
-      <el-button type="primary" size="small">上一步</el-button>
       <el-button type="primary" size="small">下一步</el-button>
       <el-button type="primary" size="small">提交</el-button>
     </el-row>
-    <AddContactDialog
+    <AddQualificationDialog
       :page-form="pageForm"
       :options="options"
       :dialog-visible="dialogVisible"
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import AddContactDialog from '@/components/my-center/base-info/add-contact-dialog'
+import AddQualificationDialog from '@/components/supplier/base-info/add-qualification-dialog'
 export default {
-  name: 'ContactsList',
+  name: 'QualificationList',
   components: {
-    AddContactDialog
+    AddQualificationDialog
   },
   data() {
     return {
@@ -47,6 +47,7 @@ export default {
         flag: 1
       },
       dialogVisible: false,
+      loading: false,
       options: [
         {
           value: '选项1',
@@ -68,32 +69,28 @@ export default {
       tableData: [],
       columns: [
         {
-          label: '姓名',
+          label: '产品与服务名',
           prop: 'name'
         },
         {
-          label: '默认',
+          label: '主资质',
           prop: 'theme'
         },
         {
-          label: '联系人类型',
+          label: '综合等级',
           prop: 'type'
         },
         {
-          label: '性别',
+          label: '资质证书名称',
           prop: 'gender'
         },
         {
-          label: '职位',
+          label: '资质证书编号',
           prop: 'position'
         },
         {
-          label: '手机号码',
+          label: '到期日',
           prop: 'mobile'
-        },
-        {
-          label: '办公固话',
-          prop: 'telephone'
         },
         {
           label: '邮箱',

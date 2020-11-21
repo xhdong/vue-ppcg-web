@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/layout'
-import LayoutMyCenter from '@/layout-my-center'
+import LayoutMyCenter from '@/layout-supplier'
 Vue.use(Router)
 export const constantRoutes = [
   {
@@ -59,7 +59,7 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/my-center',
+    path: '/supplier',
     component: LayoutMyCenter,
     redirect: '/index',
     hidden: true,
@@ -72,115 +72,115 @@ export const constantRoutes = [
       },
       {
         path: 'message-center',
-        component: () => import('@/views/my-center/message-center/index.vue'),
+        component: () => import('@/views/supplier/message-center/index.vue'),
         name: 'MessageCenter',
         meta: { title: '消息中心' }
       },
       {
         path: 'message-detail',
-        component: () => import('@/views/my-center/message-detail/index.vue'),
+        component: () => import('@/views/supplier/message-detail/index.vue'),
         name: 'MessageDetail',
         meta: { title: '消息详情' }
       },
       {
         path: 'online-registration',
-        component: () => import('@/views/my-center/online-registration/index.vue'),
+        component: () => import('@/views/supplier/online-registration/index.vue'),
         name: 'OnlineRegistration',
         meta: { title: '在线报名' }
       },
       {
-        path: 'my-tender',
-        component: () => import('@/views/my-center/my-tender/index.vue'),
-        name: 'MyTender',
+        path: 'my-bidding',
+        component: () => import('@/views/supplier/my-bidding/index.vue'),
+        name: 'MyBidding',
         meta: { title: '我的投标' }
       },
       {
-        path: 'tender-detail',
-        component: () => import('@/views/my-center/tender-detail/index.vue'),
-        name: 'TenderDetail',
+        path: 'bidding-detail',
+        component: () => import('@/views/supplier/bidding-detail/index.vue'),
+        name: 'BiddingDetail',
         meta: { title: '投标详情' }
       },
       {
         path: 'online-question',
-        component: () => import('@/views/my-center/online-question/index.vue'),
+        component: () => import('@/views/supplier/online-question/index.vue'),
         name: 'OnlineQuestion',
         meta: { title: '在线提疑' }
       },
       {
         path: 'question-info',
-        component: () => import('@/views/my-center/question-info/index.vue'),
+        component: () => import('@/views/supplier/question-info/index.vue'),
         name: 'QuestionInfo',
         meta: { title: '在线信息' }
       },
       {
-        path: 'suspension-notice',
-        component: () => import('@/views/my-center/suspension-notice/index.vue'),
-        name: 'SuspensionNotice',
+        path: 'suspend-notice',
+        component: () => import('@/views/supplier/suspend-notice/index.vue'),
+        name: 'SuspendNotice',
         meta: { title: '中止公告' }
       },
       {
-        path: 'clarification-notice',
-        component: () => import('@/views/my-center/clarification-notice/index.vue'),
-        name: 'ClarificationNotice',
+        path: 'clarify-notice',
+        component: () => import('@/views/supplier/clarify-notice/index.vue'),
+        name: 'ClarifyNotice',
         meta: { title: '澄清公告' }
       },
       {
         path: 'notice-detail',
-        component: () => import('@/views/my-center/notice-detail/index.vue'),
+        component: () => import('@/views/supplier/notice-detail/index.vue'),
         name: 'NoticeDetail',
         meta: { title: '公告详情' }
       },
       {
-        path: 'online-clarification',
-        component: () => import('@/views/my-center/online-clarification/index.vue'),
-        name: 'OnlineClarification',
+        path: 'online-clarify',
+        component: () => import('@/views/supplier/online-clarify/index.vue'),
+        name: 'OnlineClarify',
         meta: { title: '在线澄清' }
       },
       {
         path: 'base-info',
-        component: () => import('@/views/my-center/base-info/index.vue'),
+        component: () => import('@/views/supplier/base-info/index.vue'),
         name: 'BaseInfo',
         meta: { title: '基本资料' }
       },
       {
         path: 'audit-logs',
-        component: () => import('@/views/my-center/audit-logs/index.vue'),
+        component: () => import('@/views/supplier/audit-logs/index.vue'),
         name: 'AuditLogs',
         meta: { title: '审核日志' }
       },
       {
         path: 'permission-file',
-        component: () => import('@/views/my-center/permission-file/index.vue'),
+        component: () => import('@/views/supplier/permission-file/index.vue'),
         name: 'PermissionFile',
         meta: { title: '授权文件' }
       },
       {
         path: 'agent-manage',
-        component: () => import('@/views/my-center/agent-manage/index.vue'),
+        component: () => import('@/views/supplier/agent-manage/index.vue'),
         name: 'AgentManage',
         meta: { title: '分公司/代理商管理' }
       },
       {
         path: 'parent-subsidiary-company',
-        component: () => import('@/views/my-center/parent-subsidiary-company/index.vue'),
+        component: () => import('@/views/supplier/parent-subsidiary-company/index.vue'),
         name: 'ParentSubsidiaryCompany',
         meta: { title: '母子公司关系绑定' }
       },
-      {
-        path: 'account-manage',
-        component: () => import('@/views/my-center/account-manage/index.vue'),
-        name: 'AccountManage',
-        meta: { title: '账号管理' }
-      },
+      // {
+      //   path: 'account-manage',
+      //   component: () => import('@/views/supplier/account-manage/index.vue'),
+      //   name: 'AccountManage',
+      //   meta: { title: '账号管理' }
+      // },
       {
         path: 'change-password',
-        component: () => import('@/views/my-center/change-password/index.vue'),
+        component: () => import('@/views/supplier/change-password/index.vue'),
         name: 'ChangePassword',
         meta: { title: '修改密码' }
       },
       {
         path: 'favorite-list',
-        component: () => import('@/views/my-center/favorite-list/index.vue'),
+        component: () => import('@/views/supplier/favorite-list/index.vue'),
         name: 'FavoriteList',
         meta: { title: '收藏夹' }
       }

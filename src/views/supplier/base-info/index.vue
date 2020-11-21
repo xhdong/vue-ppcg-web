@@ -34,12 +34,12 @@
 </template>
 
 <script>
-import BaseCompanyInfo from '@/components/my-center/base-info/base-company-info'
-import OtherInfo from '@/components/my-center/base-info/other-info'
-import ContactsList from '@/components/my-center/base-info/contact-list'
-import FinancialStatus from '@/components/my-center/base-info/financial-status'
-import ProductService from '@/components/my-center/base-info/product-service'
-import QualificationList from '@/components/my-center/base-info/qualification-list'
+import BaseCompanyInfo from '@/components/supplier/base-info/base-company-info'
+import OtherInfo from '@/components/supplier/base-info/other-info'
+import ContactsList from '@/components/supplier/base-info/contact-list'
+import FinancialStatus from '@/components/supplier/base-info/financial-status'
+import ProductService from '@/components/supplier/base-info/product-service'
+import QualificationList from '@/components/supplier/base-info/qualification-list'
 export default {
   name: 'BaseInfo',
   components: {
